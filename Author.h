@@ -11,7 +11,7 @@
 @class Book;
 @class Sequence;
 
-@interface Author : NSObject
+@interface Author : NSObject <NSCoding>
 
 @property NSString *firstName;
 @property NSString *lastName;

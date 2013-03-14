@@ -14,7 +14,7 @@
 @end
 
 
-@interface Book : NSObject
+@interface Book : NSObject <NSCoding>
 
 @property BookDataSource *bookData;
 @property NSString *author;

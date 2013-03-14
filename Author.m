@@ -12,7 +12,26 @@
 
 @implementation Author
 
+#define kFirstName @"firstName"
+#define kLastName @"lastName"
+#define kSequences @"Sequences"
+#define kBooks @"Books"
+#define kBookCount @"bookCount"
+
 @synthesize firstName, lastName, sequences, books, bookCount;
+
+-(void)encodeWithCoder:(NSCoder *)aCoder {
+	[aCoder encodeObject:firstName forKey:kFirstName];
+	[aCoder encodeObject:lastName forKey:kLastName];
+//	[aCoder encodeObject:sequences forKey:kSequences];
+	[aCoder encodeObject:books forKey:kBooks];
+	[aCoder encodeInt64:bookCount forKey:kBookCount];
+}
+
+-(id)initWithCoder:(NSCoder *)aDecoder {
+	self = [super init];
+	return self;
+}
 
 - (id)initWithBook:(Book *)book
 {

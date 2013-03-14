@@ -13,11 +13,22 @@
 
 @class Library;
 
-@interface NVDocument : NSDocument
+@interface NVDocument : NSDocument <NSTableViewDataSource>
 {
 	Library * library;
 }
 
+@property IBOutlet NSTableView *writterTableView;
+@property (unsafe_unretained) IBOutlet NSTextField *statusString;
+
 -(IBAction) onBooksAddMenu:(id)sender;
+
+-(NSInteger)numberOfRowsInTableView:(NSTableView *)aTableView;
+-(id)tableView:(NSTableView *)aTableView objectValueForTableColumn:(NSTableColumn *)aTableColumn row:(NSInteger)rowIndex;
+
+@property (unsafe_unretained) IBOutlet NSSegmentedControl *viewMode;
+-(void)columnWithIdentifer:(NSString *)identifer setHidden:(BOOL)hidden;
+-(void)columnWithIdentifer:(NSString *)identifer setWidth:(CGFloat)width;
+-(IBAction)selectViewMode:(id)sender;
 
 @end

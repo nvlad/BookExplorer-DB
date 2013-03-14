@@ -10,7 +10,7 @@
 
 @class Author, Sequence, Book;
 
-@interface Library : NSObject
+@interface Library : NSObject <NSCoding>
 
 @property NSMutableArray *authors;
 @property NSMutableArray *sequences;

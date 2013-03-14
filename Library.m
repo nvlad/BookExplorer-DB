@@ -14,10 +14,30 @@
 
 @implementation Library
 
+#define kBooks @"Books"
+#define kSeries @"Series"
+#define kAuthors @"Authors"
+
+
 @synthesize authors, sequences, books;
 
-- (void)addBook:(Book *)book
-{
+-(void)encodeWithCoder:(NSCoder *)aCoder {
+	[aCoder encodeObject:authors forKey:kAuthors];
+//	[aCoder encodeObject:authors forKey:kAuthors];
+}
+
+-(id)initWithCoder:(NSCoder *)aDecoder {
+	self = [super init];
+	authors = [aDecoder decodeObjectForKey:kAuthors];
+	return self;
+}
+
+- (void)addBook:(Book *)book {
+	if (!books) {
+		authors = [[NSMutableArray alloc] init];
+		sequences = [[NSMutableArray alloc] init];
+		books = [[NSMutableArray alloc] init];
+	}
 	[books addObject:book];
 	
 	NSInteger aId = [authors indexOfObjectPassingTest:^BOOL(id obj, NSUInteger idx, BOOL *stop){
@@ -54,11 +74,6 @@
 		sequence = [sequences objectAtIndex:sId];
 	}
 	[sequence addBook:book];
-	
-//	if ([authors containsObject:[book author]]) {
-//		NSInteger aId = [authors indexOfObject:author];
-//	} else {
-//	}
 }
 
 - (void)loadBookFromURL:(NSURL *)url
@@ -66,8 +81,7 @@
 	[self loadBookFromFile:[url path]];
 }
 
-- (void)loadBookFromFile:(NSString *)file
-{
+- (void)loadBookFromFile:(NSString *)file {
 	if ([file hasSuffix:@".fb2"]) {
 		BookDataSource *bookDataSource = [[FB2 alloc] initWithFile:file];
 		Book *book = [[Book alloc] initWithBook: bookDataSource];
@@ -76,15 +90,8 @@
 }
 
 
-- (void)loadBooksFromPath:(NSString *)path
-{
-	if (!books) {
-		authors = [[NSMutableArray alloc] init];
-		sequences = [[NSMutableArray alloc] init];
-		books = [[NSMutableArray alloc] init];
-	}
+- (void)loadBooksFromPath:(NSString *)path {
 	NSFileManager *fileMgr = [NSFileManager defaultManager];
-    //    [fileMgr changeCurrentDirectoryPath:path];
 	NSArray *bookList = [fileMgr contentsOfDirectoryAtPath:path error:nil];
 	NSInteger bookCount = [bookList count];
     

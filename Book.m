@@ -20,7 +20,20 @@
 
 @implementation Book
 
+#define kTitle @"Title"
+#define kSequenceNum @"sequenceNum"
+
 @synthesize bookData, author, sequence, sequenceNum, title;
+
+-(void)encodeWithCoder:(NSCoder *)aCoder {
+	[aCoder encodeObject:title forKey:kTitle];
+	[aCoder encodeInt64:sequenceNum forKey:kSequenceNum];
+}
+
+-(id)initWithCoder:(NSCoder *)aDecoder {
+	self = [super init];
+	return self;
+}
 
 - (id)initWithBook:(BookDataSource*)book
 {

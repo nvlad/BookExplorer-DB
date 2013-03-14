@@ -8,12 +8,15 @@
 
 #import "NVDocument.h"
 #import "Library.h"
+#import "Author.h"
+#import "Sequence.h"
+#import "Book.h"
 
 @implementation NVDocument
 
 #define kLibrary @"Library"
-//#define kSeries @"Series"
-//#define kAuthors @"Authors"
+
+NSInteger currentViewMode = 0;
 
 - (id)init
 {
@@ -65,6 +68,7 @@
 			NSURL *url = [urls objectAtIndex:i];
 			[library loadBookFromURL:url];
 		}
+		[self.writterTableView reloadData];
 	}
 }
 
@@ -75,8 +79,8 @@
 		NSData *data;
 		NSMutableDictionary *doc = [NSMutableDictionary dictionary];
 		NSString *errorString;
-		NSLog(@"Books: %@", [NSKeyedArchiver archivedDataWithRootObject:library]);
-		[doc setObject:library forKey:kLibrary];
+//		NSLog(@"Books: %@", [NSKeyedArchiver archivedDataWithRootObject:library]);
+		[doc setObject:[NSKeyedArchiver archivedDataWithRootObject:library] forKey:kLibrary];
 		data = [NSPropertyListSerialization dataFromPropertyList:doc format:NSPropertyListXMLFormat_v1_0 errorDescription:&errorString];
 		if (!data) {
 			if (!outError) {
@@ -103,7 +107,8 @@
 - (void)setLibrary:(Library *)data
 {
 	if (library != data) {
-		library = [data mutableCopy];
+//		library = [data mutableCopy];
+		library = data;
 		NSLog(@"%@", library);
 	}
 }
@@ -115,10 +120,12 @@
 	assert([typeName isEqualToString:kBookExplorerDocumentType]);
 	
 	NSString *errorString;
-	NSDictionary *documentDictionary = [NSPropertyListSerialization propertyListFromData:data mutabilityOption:NSPropertyListImmutable format:NULL errorDescription:&errorString];
+	NSDictionary *documentDictionary = [NSPropertyListSerialization propertyListFromData:data
+																							  mutabilityOption:NSPropertyListImmutable
+																											format:NULL errorDescription:&errorString];
 	
 	if (documentDictionary) {
-		[self setLibrary:[documentDictionary objectForKey:kLibrary]];
+		[self setLibrary:[NSKeyedUnarchiver unarchiveObjectWithData:[documentDictionary objectForKey:kLibrary]]];
 		result = YES;
 	} else {
 		if (!outError) {
@@ -140,6 +147,115 @@
 	//	NSException *exception = [NSException exceptionWithName:@"UnimplementedMethod" reason:[NSString stringWithFormat:@"%@ is unimplemented", NSStringFromSelector(_cmd)] userInfo:nil];
 	//	@throw exception;
 	return YES;
+}
+
+- (void)columnWithIdentifer:(NSString *)identifer setHidden:(BOOL)hidden
+{
+	NSInteger colId = [self.writterTableView columnWithIdentifier:identifer];
+	NSTableColumn *col = [self.writterTableView.tableColumns objectAtIndex:colId];
+	[col setHidden:hidden];
+}
+
+- (void)columnWithIdentifer:(NSString *)identifer setWidth:(CGFloat)width
+{
+	NSInteger colId = [self.writterTableView columnWithIdentifier:identifer];
+	NSTableColumn *col = [self.writterTableView.tableColumns objectAtIndex:colId];
+	[col setWidth:width];
+}
+
+- (IBAction)selectViewMode:(id)sender {
+	NSInteger segment = [self.viewMode selectedSegment];
+	if (currentViewMode != segment) {
+		currentViewMode = segment;
+		NSLog(@"Switch to %ld segment", currentViewMode);
+		[self.writterTableView reloadData];
+	}
+}
+
+- (NSInteger)numberOfRowsInTableView:(NSTableView *)aTableView
+{
+	NSInteger count = 0;
+	switch (currentViewMode) {
+		case 0:
+			count = [library.authors count];
+			NSLog(@"Писатели");
+			[self columnWithIdentifer:@"title" setHidden:YES];
+			[self columnWithIdentifer:@"sequence" setHidden:YES];
+			[self columnWithIdentifer:@"sequenceNum" setHidden:YES];
+			[self columnWithIdentifer:@"bookCount" setHidden:NO];
+//			[self.statusString setValue:[NSString stringWithFormat:<#(NSString *), ...#>]]
+			break;
+		case 1:
+			count = [library.sequences count];
+			[self columnWithIdentifer:@"title" setHidden:YES];
+			[self columnWithIdentifer:@"sequence" setHidden:NO];
+			[self columnWithIdentifer:@"sequenceNum" setHidden:YES];
+			[self columnWithIdentifer:@"bookCount" setHidden:NO];
+			break;
+		case 2:
+			count = [library.books count];
+			[self columnWithIdentifer:@"bookCount" setHidden:YES];
+			[self columnWithIdentifer:@"title" setHidden:NO];
+			[self columnWithIdentifer:@"sequence" setHidden:NO];
+			[self columnWithIdentifer:@"sequenceNum" setHidden:NO];
+			break;
+	}
+	NSLog(@"Row in Table: %ld", count);
+	return count;
+}
+
+- (id)tableView:(NSTableView *)aTableView objectValueForTableColumn:(NSTableColumn *)aTableColumn row:(NSInteger)rowIndex
+{
+	//	NSLog(@"%ld", rowIndex);
+	//	NSLog(@"%@", identifier);
+	//    NSLog(@"%@", [[library.books objectAtIndex:rowIndex] title]);
+	//    if ([identifier isEqualToString:@"MainCell"]) {
+	//	NSTableCellView *cellView = [[NSTableCellView alloc] init];
+	//	NSTableCellView *cellView = [aTableView makeViewWithIdentifier:identifier owner:self];
+	//	cellView.objectValue = [[library.books objectAtIndex:rowIndex] title];
+	//	NSLog(@"%@ - %@", cellView.objectValue, [[library.books objectAtIndex:rowIndex] title]);
+	//	return cellView;
+	//    }
+	NSString *identifier = [aTableColumn identifier];
+	NSString *text;
+	Author *author;
+	Sequence *sequence;
+	switch (currentViewMode) {
+		case 0:
+			author = [library.authors objectAtIndex:rowIndex];
+			if ([identifier isEqual:@"author"])
+				text = [NSString stringWithFormat:@"%@", author];
+			else
+				text = [author valueForKey:identifier];
+			break;
+		case 1:
+			sequence = [library.sequences objectAtIndex:rowIndex];
+			if ([identifier isEqual:@"sequence"])
+				text = [NSString stringWithFormat:@"%@", [sequence title]];
+			else if ([identifier isEqual:@"author"])
+				text = [NSString stringWithFormat:@"%@", [sequence author]];
+			else
+				text = [[library.sequences objectAtIndex:rowIndex] valueForKey:identifier];
+			break;
+		case 2:
+			text = [[library.books objectAtIndex:rowIndex] valueForKey:identifier];
+			if ([identifier isEqual:@"sequenceNum"] && [[text description] isEqual:@"0"]) {
+				//				NSLog(@"typeof text \"%@\"", [[text description] isEqual:@"0"]);
+				Book *book = [library.books objectAtIndex:rowIndex];
+				if (![book sequence] || [[book sequence] isEqual:@""])
+					text = @"";
+			}
+			break;
+	}
+	//	NSString *text = [[library.books objectAtIndex:rowIndex] valueForKey:identifier];
+	if (!text || [text isEqual:@"(null)"])
+		text = @"";
+	NSCell *cell = [[NSCell alloc] initTextCell:text];
+	if ([identifier isEqual:@"sequenceNum"] || [identifier isEqual:@"bookCount"])
+		[cell setAlignment:NSCenterTextAlignment];
+	return cell;
+	//	return nil;
+	//	return [[library.Books objectAtIndex:rowIndex] author];
 }
 
 @end
