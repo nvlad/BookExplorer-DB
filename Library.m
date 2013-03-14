@@ -61,7 +61,22 @@
 //	}
 }
 
-- (void)loadBooksFromURL:(NSString *)url
+- (void)loadBookFromURL:(NSURL *)url
+{
+	[self loadBookFromFile:[url path]];
+}
+
+- (void)loadBookFromFile:(NSString *)file
+{
+	if ([file hasSuffix:@".fb2"]) {
+		BookDataSource *bookDataSource = [[FB2 alloc] initWithFile:file];
+		Book *book = [[Book alloc] initWithBook: bookDataSource];
+		[self addBook:book];
+	}
+}
+
+
+- (void)loadBooksFromPath:(NSString *)path
 {
 	if (!books) {
 		authors = [[NSMutableArray alloc] init];
@@ -70,27 +85,13 @@
 	}
 	NSFileManager *fileMgr = [NSFileManager defaultManager];
     //    [fileMgr changeCurrentDirectoryPath:path];
-	NSArray *bookList = [fileMgr contentsOfDirectoryAtPath:url error:nil];
+	NSArray *bookList = [fileMgr contentsOfDirectoryAtPath:path error:nil];
 	NSInteger bookCount = [bookList count];
     
 	for (NSInteger j = 0; j < bookCount; j++) {
-		NSString *filename = [NSString stringWithFormat:@"%@/%@", url, [bookList objectAtIndex:j]];
-		if ([filename hasSuffix:@".fb2"]) {
-			BookDataSource *bookDataSource = [[FB2 alloc] initWithFile:filename];
-			Book *book = [[Book alloc] initWithBook: bookDataSource];
-			[self addBook:book];
-		}
+		NSString *filename = [NSString stringWithFormat:@"%@/%@", path, [bookList objectAtIndex:j]];
+		[self loadBookFromFile:filename];
 	}
-}
-
-- (void)saveToFile:(NSString*)fileName
-{
-	
-}
-
-- (void)loadFromFile:(NSString*)fileName
-{
-	
 }
 
 @end

@@ -11,9 +11,11 @@
 #define kBookExplorerDocumentType @"com.nvlad.bookexplorer.document"
 #define kBookExplorerExtension @"nbl"
 
+@class Library;
+
 @interface NVDocument : NSDocument
 {
-	NSMutableArray *books;
+	Library * library;
 }
 
 -(IBAction) onBooksAddMenu:(id)sender;

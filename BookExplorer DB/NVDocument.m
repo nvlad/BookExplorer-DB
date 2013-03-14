@@ -7,20 +7,21 @@
 //
 
 #import "NVDocument.h"
+#import "Library.h"
 
 @implementation NVDocument
 
-#define kBooks @"Books"
-#define kSeries @"Series"
-#define kAuthors @"Authors"
+#define kLibrary @"Library"
+//#define kSeries @"Series"
+//#define kAuthors @"Authors"
 
 - (id)init
 {
     self = [super init];
     if (self) {
 		// Add your subclass-specific initialization here.
-		 books = [[NSMutableArray alloc] init];
-		 [books addObject:@"Hello, World!"];
+		 library = [[Library alloc] init];
+//		 [books addObject:@"Hello, World!"];
 		 [self setDisplayName:@"BookExplorer - Untitled"];
 //		 [self setDraft:YES];
     }
@@ -61,8 +62,8 @@
 	if ([openDlg runModal] == NSOKButton) {
 		NSArray* urls = [openDlg URLs];
 		for (int i = 0; i < [urls count]; i++) {
-			NSString* url = [urls objectAtIndex:i];
-			NSLog(@"Url: %@", url);
+			NSURL *url = [urls objectAtIndex:i];
+			[library loadBookFromURL:url];
 		}
 	}
 }
@@ -74,8 +75,8 @@
 		NSData *data;
 		NSMutableDictionary *doc = [NSMutableDictionary dictionary];
 		NSString *errorString;
-		NSLog(@"Books: %@", [NSKeyedArchiver archivedDataWithRootObject:books]);
-		[doc setObject:books forKey:kBooks];
+		NSLog(@"Books: %@", [NSKeyedArchiver archivedDataWithRootObject:library]);
+		[doc setObject:library forKey:kLibrary];
 		data = [NSPropertyListSerialization dataFromPropertyList:doc format:NSPropertyListXMLFormat_v1_0 errorDescription:&errorString];
 		if (!data) {
 			if (!outError) {
@@ -99,11 +100,11 @@
 	return nil;
 }
 
-- (void)setBooks:(NSArray *)data
+- (void)setLibrary:(Library *)data
 {
-	if (books != data) {
-		books = [data mutableCopy];
-		NSLog(@"%@", books);
+	if (library != data) {
+		library = [data mutableCopy];
+		NSLog(@"%@", library);
 	}
 }
 
@@ -117,7 +118,7 @@
 	NSDictionary *documentDictionary = [NSPropertyListSerialization propertyListFromData:data mutabilityOption:NSPropertyListImmutable format:NULL errorDescription:&errorString];
 	
 	if (documentDictionary) {
-		[self setBooks:[documentDictionary objectForKey:kBooks]];
+		[self setLibrary:[documentDictionary objectForKey:kLibrary]];
 		result = YES;
 	} else {
 		if (!outError) {

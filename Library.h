@@ -18,9 +18,9 @@
 
 - (void)addBook:(Book *)book;
 
-- (void)loadBooksFromURL:(NSString *)path;
+- (void)loadBookFromURL:(NSURL *)url;
+- (void)loadBookFromFile:(NSString *)file;
+- (void)loadBooksFromPath:(NSString *)path;
 
-- (void)saveToFile:(NSString*)fileName;
-- (void)loadFromFile:(NSString*)fileName;
 
 @end
