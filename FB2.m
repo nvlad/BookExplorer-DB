@@ -12,45 +12,39 @@
 
 - (id)initWithFile:(NSString *)fileName
 {
-    self = [super init];
-    NSError *error;
-    //    NSString *fbFile =[NSString PathForFile:fileName];
-    if (fileName) {
-        NSData *data = [[NSData alloc]initWithContentsOfFile:fileName options:NSDataReadingMappedIfSafe error:&error];
-        if (data) {
-            self.doc = [[NSXMLDocument alloc]initWithData:data options:NSXMLDocumentValidate error:&error];
-            NSLog(@"File loaded...");
-        } else {
-            NSLog(@"Error: %@", [error localizedDescription]);
-        }
-    }
-    return self;
+	self = [super init];
+	NSError *error;
+	//    NSString *fbFile =[NSString PathForFile:fileName];
+	if (fileName) {
+		NSData *data = [[NSData alloc]initWithContentsOfFile:fileName options:NSDataReadingMappedIfSafe error:&error];
+		if (data) {
+			self.file = fileName;
+			self.doc = [[NSXMLDocument alloc]initWithData:data options:NSXMLDocumentValidate error:&error];
+			NSLog(@"File \"%@\" loaded...", fileName);
+		} else {
+			NSLog(@"Error: %@", [error localizedDescription]);
+		}
+	}
+	return self;
 }
 
 - (NSArray*)getNodeFromPath:(NSString *)path
 {
-    NSError *error;
-    NSArray *result = [self.doc objectsForXQuery:path constants:nil error:&error];
-    if (result)
-        return result;
-    NSLog(@"Error: %@", [error localizedDescription]);
-    return nil;
+	NSError *error;
+	NSArray *result = [self.doc objectsForXQuery:path constants:nil error:&error];
+	if (result)
+		return result;
+	NSLog(@"Error: %@", [error localizedDescription]);
+	return nil;
 }
 
 - (NSString*)getValueFromPath:(NSString *)path
 {
-    NSArray *result =[self getNodeFromPath:path];
-    if (result) {
-        //        NSInteger count = [result count];
-        //        NSLog(@"Count: %ld", count);
-        //        for (i = 0; i < count; i++) {
-        //                        NSLog(@"%@: %@", [[result objectAtIndex:i] name], [[result objectAtIndex:i] stringValue]);
-        //            NSLog(@"Sequence name: %@", [[[result objectAtIndex:i] attributeForName:@"name"] stringValue]);
-        //            NSLog(@"Order in sequence: %@", [[[result objectAtIndex:i] attributeForName:@"number"] stringValue]);
-        //        }
-        return [[result objectAtIndex:0] stringValue];
-    }
-    return nil;
+	NSArray *result =[self getNodeFromPath:path];
+	if (result) {
+		return [[result objectAtIndex:0] stringValue];
+	}
+	return nil;
 }
 
 - (NSString*)getAttributeValueFromPath:(NSString *)path withName:(NSString *)name
@@ -68,6 +62,10 @@
 //        return [[result objectAtIndex:0] stringValue];
     }
     return nil;
+}
+
+-(NSString *)bookId {
+	return [self getValueFromPath:@"/FictionBook/description/document-info/id"];
 }
 
 - (NSString*)firstName

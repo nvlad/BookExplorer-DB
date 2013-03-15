@@ -30,6 +30,10 @@
 
 -(id)initWithCoder:(NSCoder *)aDecoder {
 	self = [super init];
+	firstName = [aDecoder decodeObjectForKey:kFirstName];
+	lastName = [aDecoder decodeObjectForKey:kLastName];
+	books = [aDecoder decodeObjectForKey:kBooks];
+	bookCount = [aDecoder decodeInt64ForKey:kBookCount];
 	return self;
 }
 

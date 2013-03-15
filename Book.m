@@ -20,18 +20,35 @@
 
 @implementation Book
 
+#define kBookId @"bookId"
+#define kFirstName @"firstName"
+#define kLastName @"lastName"
 #define kTitle @"Title"
+#define kSequence @"Sequence"
 #define kSequenceNum @"sequenceNum"
+#define kFile @"File"
 
-@synthesize bookData, author, sequence, sequenceNum, title;
+@synthesize bookData, bookId, firstName, lastName, author, title, sequence, sequenceNum, file;
 
 -(void)encodeWithCoder:(NSCoder *)aCoder {
+	[aCoder encodeObject:bookId forKey:kBookId];
+	[aCoder encodeObject:firstName forKey:kFirstName];
+	[aCoder encodeObject:lastName forKey:kLastName];
 	[aCoder encodeObject:title forKey:kTitle];
+	[aCoder encodeObject:sequence forKey:kSequence];
 	[aCoder encodeInt64:sequenceNum forKey:kSequenceNum];
+	[aCoder encodeObject:file forKey:kFile];
 }
 
 -(id)initWithCoder:(NSCoder *)aDecoder {
 	self = [super init];
+	bookId = [aDecoder decodeObjectForKey:kBookId];
+	firstName = [aDecoder decodeObjectForKey:kFirstName];
+	lastName = [aDecoder decodeObjectForKey:kLastName];
+	author = [NSString stringWithFormat:@"%@ %@", firstName, lastName];
+	title = [aDecoder decodeObjectForKey:kTitle];
+	sequence = [aDecoder decodeObjectForKey:kSequence];
+	sequenceNum = [aDecoder decodeInt64ForKey:kSequenceNum];
 	return self;
 }
 

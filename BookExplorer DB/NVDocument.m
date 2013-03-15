@@ -42,6 +42,7 @@ NSInteger currentViewMode = 0;
 {
 	[super windowControllerDidLoadNib:aController];
 	// Add any code here that needs to be executed once the windowController has loaded the document's window.
+	[[self statusString] setStringValue:[NSString stringWithFormat:@"Authors %ld, Books %ld", [library.authors count], [library.books count]]];
 }
 
 + (BOOL)autosavesInPlace
@@ -60,7 +61,8 @@ NSInteger currentViewMode = 0;
 	[openDlg setCanChooseFiles:YES];
 	[openDlg setAllowsMultipleSelection:YES];
 	[openDlg setCanChooseDirectories:NO];
-	NSArray *types = [NSArray arrayWithObjects:@"fb2", @"epub", nil];
+//	NSArray *types = [NSArray arrayWithObjects:@"fb2", @"epub", nil];
+	NSArray *types = [NSArray arrayWithObjects:@"fb2", nil];
 	[openDlg setAllowedFileTypes:types];
 	if ([openDlg runModal] == NSOKButton) {
 		NSArray* urls = [openDlg URLs];
@@ -69,6 +71,7 @@ NSInteger currentViewMode = 0;
 			[library loadBookFromURL:url];
 		}
 		[self.writterTableView reloadData];
+		[[self statusString] setStringValue:[NSString stringWithFormat:@"Authors %ld, Books %ld", [library.authors count], [library.books count]]];
 	}
 }
 
@@ -81,6 +84,7 @@ NSInteger currentViewMode = 0;
 		NSString *errorString;
 //		NSLog(@"Books: %@", [NSKeyedArchiver archivedDataWithRootObject:library]);
 		[doc setObject:[NSKeyedArchiver archivedDataWithRootObject:library] forKey:kLibrary];
+//		[doc setObject:library forKey:kLibrary];
 		data = [NSPropertyListSerialization dataFromPropertyList:doc format:NSPropertyListXMLFormat_v1_0 errorDescription:&errorString];
 		if (!data) {
 			if (!outError) {
@@ -115,6 +119,7 @@ NSInteger currentViewMode = 0;
 
 - (BOOL)readFromData:(NSData *)data ofType:(NSString *)typeName error:(NSError **)outError
 {
+	NSLog(@"readFromData");
 	BOOL result = NO;
 	// we only recognize one data type.  It is a programming error to call this method with any other typeName
 	assert([typeName isEqualToString:kBookExplorerDocumentType]);

@@ -12,6 +12,7 @@
 @interface FB2: BookDataSource
 
 @property NSXMLDocument *doc;
+@property NSString *file;
 
 - (id)initWithFile:(NSString *)fileName;
 - (NSArray*)getNodeFromPath:(NSString *)path;

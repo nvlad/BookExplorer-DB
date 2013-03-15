@@ -75,10 +75,10 @@
 				C3208BDF16F2085400D0C24B /* Library.m */,
 				C3208BC916F205FD00D0C24B /* Author.h */,
 				C3208BCA16F205FD00D0C24B /* Author.m */,
-				C3208BCB16F205FD00D0C24B /* Book.h */,
-				C3208BCC16F205FD00D0C24B /* Book.m */,
 				C3208BD116F205FD00D0C24B /* Sequence.h */,
 				C3208BD216F205FD00D0C24B /* Sequence.m */,
+				C3208BCB16F205FD00D0C24B /* Book.h */,
+				C3208BCC16F205FD00D0C24B /* Book.m */,
 			);
 			name = "Book Classes";
 			sourceTree = "<group>";

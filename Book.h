@@ -17,12 +17,14 @@
 @interface Book : NSObject <NSCoding>
 
 @property BookDataSource *bookData;
-@property NSString *author;
+@property NSString *bookId;
 @property NSString *firstName;
 @property NSString *lastName;
+@property NSString *author;
 @property NSString *sequence;
 @property NSInteger sequenceNum;
 @property NSString *title;
+@property NSString *file;
 
 - (id)initWithBook:(BookDataSource *)book;
 

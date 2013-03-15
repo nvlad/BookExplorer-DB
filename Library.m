@@ -22,14 +22,18 @@
 @synthesize authors, sequences, books;
 
 -(void)encodeWithCoder:(NSCoder *)aCoder {
-	[aCoder encodeObject:authors forKey:kAuthors];
-//	[aCoder encodeObject:authors forKey:kAuthors];
+	[aCoder encodeObject:books	forKey:kBooks];
 }
 
 -(id)initWithCoder:(NSCoder *)aDecoder {
 	self = [super init];
-	authors = [aDecoder decodeObjectForKey:kAuthors];
+	NSLog(@"Library - initWithCoder");
+	NSArray *tmp = [aDecoder decodeObjectForKey:kBooks];
+	for (NSInteger i = 0; i < [tmp count]; i++) {
+		[self addBook:[tmp objectAtIndex:i]];
+	}
 	return self;
+	
 }
 
 - (void)addBook:(Book *)book {

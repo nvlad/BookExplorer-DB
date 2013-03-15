@@ -10,6 +10,10 @@
 
 @implementation BookDataSource
 
+-(NSString *)bookId {
+	return nil;
+}
+
 - (NSString*)firstName
 {
 	return nil;
@@ -41,6 +45,11 @@
 - (NSString*)title
 {
 	return nil;
+}
+
+- (NSString*)file
+{
+	return [self file];
 }
 
 @end
