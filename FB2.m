@@ -10,7 +10,7 @@
 
 @implementation FB2
 
-- (id)initWithFile:(NSString *)fileName
+-(id)initWithFile:(NSString *)fileName
 {
 	self = [super init];
 	NSError *error;
@@ -28,7 +28,7 @@
 	return self;
 }
 
-- (NSArray*)getNodeFromPath:(NSString *)path
+-(NSArray*)getNodeFromPath:(NSString *)path
 {
 	NSError *error;
 	NSArray *result = [self.doc objectsForXQuery:path constants:nil error:&error];
@@ -38,7 +38,7 @@
 	return nil;
 }
 
-- (NSString*)getValueFromPath:(NSString *)path
+-(NSString*)getValueFromPath:(NSString *)path
 {
 	NSArray *result =[self getNodeFromPath:path];
 	if (result) {
@@ -47,7 +47,7 @@
 	return nil;
 }
 
-- (NSString*)getAttributeValueFromPath:(NSString *)path withName:(NSString *)name
+-(NSString*)getAttributeValueFromPath:(NSString *)path withName:(NSString *)name
 {
     NSArray *result = [self getNodeFromPath:path];
     if (result && [result count]) {
@@ -68,17 +68,17 @@
 	return [self getValueFromPath:@"/FictionBook/description/document-info/id"];
 }
 
-- (NSString*)firstName
+-(NSString*)firstName
 {
 	return [self getValueFromPath:@"/FictionBook/description/title-info/author/first-name"];
 }
 
-- (NSString*)lastName
+-(NSString*)lastName
 {
 	return [self getValueFromPath:@"/FictionBook/description/title-info/author/last-name"];
 }
 
-- (NSString*)author
+-(NSString*)author
 {
 	NSString *firstName, *lastName;
 	firstName = [self firstName];
@@ -86,21 +86,27 @@
 	return [NSString stringWithFormat:@"%@ %@", firstName, lastName];
 }
 
-- (NSString*)sequence
+-(NSString*)sequence
 {
     return [self getAttributeValueFromPath:@"/FictionBook/description/title-info/sequence"
                                   withName:@"name"];
 }
 
-- (NSInteger)sequenceNum
+-(NSInteger)sequenceNum
 {
     return [[self getAttributeValueFromPath:@"/FictionBook/description/title-info/sequence"
                                    withName:@"number"] integerValue];
 }
 
-- (NSString*)title
+-(NSString*)title
 {
 	return [self getValueFromPath:@"/FictionBook/description/title-info/book-title"];
+}
+
+-(NSDictionary *)genres {
+	NSString *fname = [[NSBundle mainBundle] pathForResource:@"fb2_genre" ofType:@"strings"];
+	NSDictionary *d = [NSDictionary dictionaryWithContentsOfFile:fname];
+	return d;
 }
 
 @end

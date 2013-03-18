@@ -61,23 +61,25 @@
 		author = [authors objectAtIndex:aId];
 		[author addBook:book];
 	}
-	NSInteger sId = [sequences indexOfObjectPassingTest:^BOOL(id obj, NSUInteger idx, BOOL *stop){
-		if ([[book sequence] isEqualToString:[obj title]]) {
-			*stop = YES;
-			return YES;
+	if ([book.sequence isNotEqualTo:@""]) {
+		NSInteger sId = [sequences indexOfObjectPassingTest:^BOOL(id obj, NSUInteger idx, BOOL *stop){
+			if ([[book sequence] isEqualToString:[obj title]]) {
+				*stop = YES;
+				return YES;
+			}
+			return NO;
+		}];
+		Sequence *sequence;
+		if (sId == NSNotFound) {
+			NSLog(@"New sequence \"%@\"", [book sequence]);
+			sequence = [[Sequence alloc] init:[book sequence] withAuthor:author];
+			[author addSequence:sequence];
+			[sequences addObject:sequence];
+		} else {
+			sequence = [sequences objectAtIndex:sId];
 		}
-		return NO;
-	}];
-	Sequence *sequence;
-	if (sId == NSNotFound) {
-		NSLog(@"New sequence \"%@\"", [book sequence]);
-		sequence = [[Sequence alloc] init:[book sequence] withAuthor:author];
-		[author addSequence:sequence];
-		[sequences addObject:sequence];
-	} else {
-		sequence = [sequences objectAtIndex:sId];
+		[sequence addBook:book];
 	}
-	[sequence addBook:book];
 }
 
 - (void)loadBookFromURL:(NSURL *)url

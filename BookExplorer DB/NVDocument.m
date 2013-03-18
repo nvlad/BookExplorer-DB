@@ -43,6 +43,7 @@ NSInteger currentViewMode = 0;
 	[super windowControllerDidLoadNib:aController];
 	// Add any code here that needs to be executed once the windowController has loaded the document's window.
 	[[self statusString] setStringValue:[NSString stringWithFormat:@"Authors %ld, Books %ld", [library.authors count], [library.books count]]];
+	[self.writterTableView setDoubleAction:@selector(onDoubleClick:)];
 }
 
 + (BOOL)autosavesInPlace
@@ -72,6 +73,15 @@ NSInteger currentViewMode = 0;
 		}
 		[self.writterTableView reloadData];
 		[[self statusString] setStringValue:[NSString stringWithFormat:@"Authors %ld, Books %ld", [library.authors count], [library.books count]]];
+	}
+}
+
+-(void)onDoubleClick:(id)sender {
+	if (currentViewMode == 2) {
+		NSIndexSet *selectedRow = [self.writterTableView selectedRowIndexes];
+		if (selectedRow.count == 1) {
+			NSLog(@"%ld", [selectedRow firstIndex]);
+		}
 	}
 }
 
@@ -211,16 +221,6 @@ NSInteger currentViewMode = 0;
 
 - (id)tableView:(NSTableView *)aTableView objectValueForTableColumn:(NSTableColumn *)aTableColumn row:(NSInteger)rowIndex
 {
-	//	NSLog(@"%ld", rowIndex);
-	//	NSLog(@"%@", identifier);
-	//    NSLog(@"%@", [[library.books objectAtIndex:rowIndex] title]);
-	//    if ([identifier isEqualToString:@"MainCell"]) {
-	//	NSTableCellView *cellView = [[NSTableCellView alloc] init];
-	//	NSTableCellView *cellView = [aTableView makeViewWithIdentifier:identifier owner:self];
-	//	cellView.objectValue = [[library.books objectAtIndex:rowIndex] title];
-	//	NSLog(@"%@ - %@", cellView.objectValue, [[library.books objectAtIndex:rowIndex] title]);
-	//	return cellView;
-	//    }
 	NSString *identifier = [aTableColumn identifier];
 	NSString *text;
 	Author *author;

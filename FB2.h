@@ -19,11 +19,14 @@
 - (NSString*)getValueFromPath:(NSString *)path;
 - (NSString*)getAttributeValueFromPath:(NSString*)path withName:(NSString*)name;
 
-- (NSString*)firstName;
-- (NSString*)lastName;
-- (NSString*)author;
-- (NSString*)sequence;
-- (NSInteger)sequenceNum;
-- (NSString*)title;
+-(NSString*)bookId;
+-(NSString*)firstName;
+-(NSString*)lastName;
+-(NSString*)author;
+-(NSString*)sequence;
+-(NSInteger)sequenceNum;
+-(NSString*)title;
+
+-(NSDictionary*)genres;
 
 @end

@@ -14,6 +14,7 @@
 		C3208BD716F205FD00D0C24B /* Sequence.m in Sources */ = {isa = PBXBuildFile; fileRef = C3208BD216F205FD00D0C24B /* Sequence.m */; };
 		C3208BDD16F2064C00D0C24B /* BookDataSource.m in Sources */ = {isa = PBXBuildFile; fileRef = C3208BDC16F2064C00D0C24B /* BookDataSource.m */; };
 		C3208BE016F2085400D0C24B /* Library.m in Sources */ = {isa = PBXBuildFile; fileRef = C3208BDF16F2085400D0C24B /* Library.m */; };
+		C3A5717316F7586400310321 /* fb2_genre.strings in Resources */ = {isa = PBXBuildFile; fileRef = C3A5717516F7586400310321 /* fb2_genre.strings */; };
 		C3EA24CF16CE8A0800A10941 /* Cocoa.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C3EA24CE16CE8A0800A10941 /* Cocoa.framework */; };
 		C3EA24D916CE8A0800A10941 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = C3EA24D716CE8A0800A10941 /* InfoPlist.strings */; };
 		C3EA24DB16CE8A0800A10941 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = C3EA24DA16CE8A0800A10941 /* main.m */; };
@@ -39,6 +40,7 @@
 		C3208BDC16F2064C00D0C24B /* BookDataSource.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BookDataSource.m; sourceTree = "<group>"; };
 		C3208BDE16F2085400D0C24B /* Library.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Library.h; sourceTree = "<group>"; };
 		C3208BDF16F2085400D0C24B /* Library.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Library.m; sourceTree = "<group>"; };
+		C3A5717416F7586400310321 /* en */ = {isa = PBXFileReference; lastKnownFileType = file; name = en; path = en.lproj/fb2_genre.strings; sourceTree = "<group>"; };
 		C3EA24CB16CE8A0800A10941 /* BookExplorer DB.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "BookExplorer DB.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		C3EA24CE16CE8A0800A10941 /* Cocoa.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Cocoa.framework; path = System/Library/Frameworks/Cocoa.framework; sourceTree = SDKROOT; };
 		C3EA24D116CE8A0800A10941 /* AppKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AppKit.framework; path = System/Library/Frameworks/AppKit.framework; sourceTree = SDKROOT; };
@@ -100,6 +102,7 @@
 				C3208BCE16F205FD00D0C24B /* FB2.m */,
 				C3208BCF16F205FD00D0C24B /* FB2Bin.h */,
 				C3208BD016F205FD00D0C24B /* FB2Bin.m */,
+				C3A5717516F7586400310321 /* fb2_genre.strings */,
 			);
 			name = FB2;
 			sourceTree = "<group>";
@@ -212,6 +215,7 @@
 			hasScannedForEncodings = 0;
 			knownRegions = (
 				en,
+				ru,
 			);
 			mainGroup = C3EA24C216CE8A0800A10941;
 			productRefGroup = C3EA24CC16CE8A0800A10941 /* Products */;
@@ -233,6 +237,7 @@
 				C3EA24E516CE8A0800A10941 /* NVDocument.xib in Resources */,
 				C3EA24E816CE8A0800A10941 /* MainMenu.xib in Resources */,
 				C3EA24EF16CE8BDD00A10941 /* red-book.icns in Resources */,
+				C3A5717316F7586400310321 /* fb2_genre.strings in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -258,6 +263,14 @@
 /* End PBXSourcesBuildPhase section */
 
 /* Begin PBXVariantGroup section */
+		C3A5717516F7586400310321 /* fb2_genre.strings */ = {
+			isa = PBXVariantGroup;
+			children = (
+				C3A5717416F7586400310321 /* en */,
+			);
+			name = fb2_genre.strings;
+			sourceTree = "<group>";
+		};
 		C3EA24D716CE8A0800A10941 /* InfoPlist.strings */ = {
 			isa = PBXVariantGroup;
 			children = (

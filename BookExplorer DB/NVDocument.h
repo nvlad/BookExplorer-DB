@@ -21,7 +21,8 @@
 @property IBOutlet NSTableView *writterTableView;
 @property (unsafe_unretained) IBOutlet NSTextField *statusString;
 
--(IBAction) onBooksAddMenu:(id)sender;
+-(IBAction)onBooksAddMenu:(id)sender;
+-(IBAction)onDoubleClick:(id)sender;
 
 -(NSInteger)numberOfRowsInTableView:(NSTableView *)aTableView;
 -(id)tableView:(NSTableView *)aTableView objectValueForTableColumn:(NSTableColumn *)aTableColumn row:(NSInteger)rowIndex;

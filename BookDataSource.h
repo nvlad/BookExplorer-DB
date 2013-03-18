@@ -17,4 +17,5 @@
 -(NSInteger)sequenceNum;
 -(NSString*)title;
 -(NSString*)file;
+-(NSDictionary*)genres;
 @end

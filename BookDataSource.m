@@ -52,4 +52,8 @@
 	return [self file];
 }
 
+-(NSDictionary *)genres {
+	return nil;
+}
+
 @end
