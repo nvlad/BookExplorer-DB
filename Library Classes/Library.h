@@ -16,11 +16,15 @@
 @property NSMutableArray *sequences;
 @property NSMutableArray *books;
 
-- (void)addBook:(Book *)book;
+-(void)addBook:(Book *)book;
 
-- (void)loadBookFromURL:(NSURL *)url;
-- (void)loadBookFromFile:(NSString *)file;
-- (void)loadBooksFromPath:(NSString *)path;
+-(void)removeBooks:(NSSet *)objects;
+-(void)removeBooksObject:(Book *)object;
+-(void)removeBooksAtIndexes:(NSIndexSet *)indexes;
+
+-(void)loadBookFromURL:(NSURL *)url;
+-(void)loadBookFromFile:(NSString *)file;
+-(void)loadBooksFromPath:(NSString *)path;
 
 
 @end

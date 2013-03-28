@@ -79,7 +79,17 @@ NSInteger currentViewMode = 0;
 }
 
 -(void)onDeletePressed:(id)sender {
-	NSLog(@"onDelete");
+	switch (currentViewMode) {
+		case 0:
+			NSLog(@"delete Author!");
+			break;
+		case 1:
+			NSLog(@"delete Sequence!");
+			break;
+		case 2:
+			NSLog(@"delete Book!");
+			break;
+	}
 }
 
 -(void)onDoubleClick:(id)sender {

@@ -187,9 +187,9 @@
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
-		C3EA24CA16CE8A0800A10941 /* BookExplorer DB */ = {
+		C3EA24CA16CE8A0800A10941 /* BookExplorer */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = C3EA24EB16CE8A0800A10941 /* Build configuration list for PBXNativeTarget "BookExplorer DB" */;
+			buildConfigurationList = C3EA24EB16CE8A0800A10941 /* Build configuration list for PBXNativeTarget "BookExplorer" */;
 			buildPhases = (
 				C3EA24C716CE8A0800A10941 /* Sources */,
 				C3EA24C816CE8A0800A10941 /* Frameworks */,
@@ -199,7 +199,7 @@
 			);
 			dependencies = (
 			);
-			name = "BookExplorer DB";
+			name = BookExplorer;
 			productName = "BookExplorer DB";
 			productReference = C3EA24CB16CE8A0800A10941 /* BookExplorer DB.app */;
 			productType = "com.apple.product-type.application";
@@ -227,7 +227,7 @@
 			projectDirPath = "";
 			projectRoot = "";
 			targets = (
-				C3EA24CA16CE8A0800A10941 /* BookExplorer DB */,
+				C3EA24CA16CE8A0800A10941 /* BookExplorer */,
 			);
 		};
 /* End PBXProject section */
@@ -339,9 +339,9 @@
 				GCC_WARN_ABOUT_RETURN_TYPE = YES;
 				GCC_WARN_UNINITIALIZED_AUTOS = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				MACOSX_DEPLOYMENT_TARGET = 10.8;
+				MACOSX_DEPLOYMENT_TARGET = 10.6;
 				ONLY_ACTIVE_ARCH = YES;
-				SDKROOT = macosx;
+				SDKROOT = macosx10.7;
 			};
 			name = Debug;
 		};
@@ -366,8 +366,8 @@
 				GCC_WARN_ABOUT_RETURN_TYPE = YES;
 				GCC_WARN_UNINITIALIZED_AUTOS = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				MACOSX_DEPLOYMENT_TARGET = 10.8;
-				SDKROOT = macosx;
+				MACOSX_DEPLOYMENT_TARGET = 10.6;
+				SDKROOT = macosx10.7;
 			};
 			name = Release;
 		};
@@ -407,7 +407,7 @@
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		C3EA24EB16CE8A0800A10941 /* Build configuration list for PBXNativeTarget "BookExplorer DB" */ = {
+		C3EA24EB16CE8A0800A10941 /* Build configuration list for PBXNativeTarget "BookExplorer" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				C3EA24EC16CE8A0800A10941 /* Debug */,
