@@ -44,6 +44,8 @@ NSInteger currentViewMode = 0;
 	// Add any code here that needs to be executed once the windowController has loaded the document's window.
 	[[self statusString] setStringValue:[NSString stringWithFormat:@"Authors %ld, Books %ld", [library.authors count], [library.books count]]];
 	[self.writterTableView setDoubleAction:@selector(onDoubleClick:)];
+	[self.writterTableView setTarget:self];
+	[self.writterTableView setDeleteAction:@selector(onDeletePressed:)];
 }
 
 + (BOOL)autosavesInPlace
@@ -76,6 +78,10 @@ NSInteger currentViewMode = 0;
 	}
 }
 
+-(void)onDeletePressed:(id)sender {
+	NSLog(@"onDelete");
+}
+
 -(void)onDoubleClick:(id)sender {
 	if (currentViewMode == 2) {
 		NSIndexSet *selectedRow = [self.writterTableView selectedRowIndexes];
@@ -83,6 +89,11 @@ NSInteger currentViewMode = 0;
 			NSLog(@"%ld", [selectedRow firstIndex]);
 		}
 	}
+}
+
+-(void)keyDown:(NSEvent*)event
+{
+	NSLog(@"keyDown");
 }
 
 - (NSData *)dataOfType:(NSString *)typeName error:(NSError **)outError

@@ -7,13 +7,14 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		C3208BD316F205FD00D0C24B /* Author.m in Sources */ = {isa = PBXBuildFile; fileRef = C3208BCA16F205FD00D0C24B /* Author.m */; };
-		C3208BD416F205FD00D0C24B /* Book.m in Sources */ = {isa = PBXBuildFile; fileRef = C3208BCC16F205FD00D0C24B /* Book.m */; };
-		C3208BD516F205FD00D0C24B /* FB2.m in Sources */ = {isa = PBXBuildFile; fileRef = C3208BCE16F205FD00D0C24B /* FB2.m */; };
-		C3208BD616F205FD00D0C24B /* FB2Bin.m in Sources */ = {isa = PBXBuildFile; fileRef = C3208BD016F205FD00D0C24B /* FB2Bin.m */; };
-		C3208BD716F205FD00D0C24B /* Sequence.m in Sources */ = {isa = PBXBuildFile; fileRef = C3208BD216F205FD00D0C24B /* Sequence.m */; };
-		C3208BDD16F2064C00D0C24B /* BookDataSource.m in Sources */ = {isa = PBXBuildFile; fileRef = C3208BDC16F2064C00D0C24B /* BookDataSource.m */; };
-		C3208BE016F2085400D0C24B /* Library.m in Sources */ = {isa = PBXBuildFile; fileRef = C3208BDF16F2085400D0C24B /* Library.m */; };
+		B352E8F517024CAB0055D0AD /* NVTableView.m in Sources */ = {isa = PBXBuildFile; fileRef = B352E8F417024CAB0055D0AD /* NVTableView.m */; };
+		B352E9021702522C0055D0AD /* BookDataSource.m in Sources */ = {isa = PBXBuildFile; fileRef = B352E9011702522C0055D0AD /* BookDataSource.m */; };
+		B352E907170252400055D0AD /* FB2Bin.m in Sources */ = {isa = PBXBuildFile; fileRef = B352E904170252400055D0AD /* FB2Bin.m */; };
+		B352E908170252400055D0AD /* FB2.m in Sources */ = {isa = PBXBuildFile; fileRef = B352E906170252400055D0AD /* FB2.m */; };
+		B352E911170252AE0055D0AD /* Author.m in Sources */ = {isa = PBXBuildFile; fileRef = B352E90A170252AE0055D0AD /* Author.m */; };
+		B352E912170252AE0055D0AD /* Book.m in Sources */ = {isa = PBXBuildFile; fileRef = B352E90C170252AE0055D0AD /* Book.m */; };
+		B352E913170252AE0055D0AD /* Library.m in Sources */ = {isa = PBXBuildFile; fileRef = B352E90E170252AE0055D0AD /* Library.m */; };
+		B352E914170252AE0055D0AD /* Sequence.m in Sources */ = {isa = PBXBuildFile; fileRef = B352E910170252AE0055D0AD /* Sequence.m */; };
 		C3A5717316F7586400310321 /* fb2_genre.strings in Resources */ = {isa = PBXBuildFile; fileRef = C3A5717516F7586400310321 /* fb2_genre.strings */; };
 		C3EA24CF16CE8A0800A10941 /* Cocoa.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C3EA24CE16CE8A0800A10941 /* Cocoa.framework */; };
 		C3EA24D916CE8A0800A10941 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = C3EA24D716CE8A0800A10941 /* InfoPlist.strings */; };
@@ -26,21 +27,23 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
-		C3208BC916F205FD00D0C24B /* Author.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Author.h; sourceTree = "<group>"; };
-		C3208BCA16F205FD00D0C24B /* Author.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Author.m; sourceTree = "<group>"; };
-		C3208BCB16F205FD00D0C24B /* Book.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Book.h; sourceTree = "<group>"; };
-		C3208BCC16F205FD00D0C24B /* Book.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Book.m; sourceTree = "<group>"; };
-		C3208BCD16F205FD00D0C24B /* FB2.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FB2.h; sourceTree = "<group>"; };
-		C3208BCE16F205FD00D0C24B /* FB2.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FB2.m; sourceTree = "<group>"; };
-		C3208BCF16F205FD00D0C24B /* FB2Bin.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FB2Bin.h; sourceTree = "<group>"; };
-		C3208BD016F205FD00D0C24B /* FB2Bin.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FB2Bin.m; sourceTree = "<group>"; };
-		C3208BD116F205FD00D0C24B /* Sequence.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Sequence.h; sourceTree = "<group>"; };
-		C3208BD216F205FD00D0C24B /* Sequence.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Sequence.m; sourceTree = "<group>"; };
-		C3208BDB16F2064C00D0C24B /* BookDataSource.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BookDataSource.h; sourceTree = "<group>"; };
-		C3208BDC16F2064C00D0C24B /* BookDataSource.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BookDataSource.m; sourceTree = "<group>"; };
-		C3208BDE16F2085400D0C24B /* Library.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Library.h; sourceTree = "<group>"; };
-		C3208BDF16F2085400D0C24B /* Library.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Library.m; sourceTree = "<group>"; };
-		C3A5717416F7586400310321 /* en */ = {isa = PBXFileReference; lastKnownFileType = file; name = en; path = en.lproj/fb2_genre.strings; sourceTree = "<group>"; };
+		B352E8F317024CAB0055D0AD /* NVTableView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NVTableView.h; sourceTree = "<group>"; };
+		B352E8F417024CAB0055D0AD /* NVTableView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NVTableView.m; sourceTree = "<group>"; };
+		B352E9001702522C0055D0AD /* BookDataSource.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = BookDataSource.h; path = BookData/BookDataSource.h; sourceTree = "<group>"; };
+		B352E9011702522C0055D0AD /* BookDataSource.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = BookDataSource.m; path = BookData/BookDataSource.m; sourceTree = "<group>"; };
+		B352E903170252400055D0AD /* FB2Bin.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = FB2Bin.h; path = BookData/fb2/FB2Bin.h; sourceTree = "<group>"; };
+		B352E904170252400055D0AD /* FB2Bin.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = FB2Bin.m; path = BookData/fb2/FB2Bin.m; sourceTree = "<group>"; };
+		B352E905170252400055D0AD /* FB2.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = FB2.h; path = BookData/fb2/FB2.h; sourceTree = "<group>"; };
+		B352E906170252400055D0AD /* FB2.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = FB2.m; path = BookData/fb2/FB2.m; sourceTree = "<group>"; };
+		B352E909170252AE0055D0AD /* Author.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = Author.h; path = "Library Classes/Author.h"; sourceTree = "<group>"; };
+		B352E90A170252AE0055D0AD /* Author.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = Author.m; path = "Library Classes/Author.m"; sourceTree = "<group>"; };
+		B352E90B170252AE0055D0AD /* Book.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = Book.h; path = "Library Classes/Book.h"; sourceTree = "<group>"; };
+		B352E90C170252AE0055D0AD /* Book.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = Book.m; path = "Library Classes/Book.m"; sourceTree = "<group>"; };
+		B352E90D170252AE0055D0AD /* Library.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = Library.h; path = "Library Classes/Library.h"; sourceTree = "<group>"; };
+		B352E90E170252AE0055D0AD /* Library.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = Library.m; path = "Library Classes/Library.m"; sourceTree = "<group>"; };
+		B352E90F170252AE0055D0AD /* Sequence.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = Sequence.h; path = "Library Classes/Sequence.h"; sourceTree = "<group>"; };
+		B352E910170252AE0055D0AD /* Sequence.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = Sequence.m; path = "Library Classes/Sequence.m"; sourceTree = "<group>"; };
+		C3A5717416F7586400310321 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/fb2_genre.strings; sourceTree = "<group>"; };
 		C3EA24CB16CE8A0800A10941 /* BookExplorer DB.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "BookExplorer DB.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		C3EA24CE16CE8A0800A10941 /* Cocoa.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Cocoa.framework; path = System/Library/Frameworks/Cocoa.framework; sourceTree = SDKROOT; };
 		C3EA24D116CE8A0800A10941 /* AppKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AppKit.framework; path = System/Library/Frameworks/AppKit.framework; sourceTree = SDKROOT; };
@@ -70,17 +73,28 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		B352E8FF170251DF0055D0AD /* fb2 */ = {
+			isa = PBXGroup;
+			children = (
+				B352E905170252400055D0AD /* FB2.h */,
+				B352E906170252400055D0AD /* FB2.m */,
+				B352E903170252400055D0AD /* FB2Bin.h */,
+				B352E904170252400055D0AD /* FB2Bin.m */,
+			);
+			name = fb2;
+			sourceTree = "<group>";
+		};
 		C3208BD816F2060C00D0C24B /* Book Classes */ = {
 			isa = PBXGroup;
 			children = (
-				C3208BDE16F2085400D0C24B /* Library.h */,
-				C3208BDF16F2085400D0C24B /* Library.m */,
-				C3208BC916F205FD00D0C24B /* Author.h */,
-				C3208BCA16F205FD00D0C24B /* Author.m */,
-				C3208BD116F205FD00D0C24B /* Sequence.h */,
-				C3208BD216F205FD00D0C24B /* Sequence.m */,
-				C3208BCB16F205FD00D0C24B /* Book.h */,
-				C3208BCC16F205FD00D0C24B /* Book.m */,
+				B352E90D170252AE0055D0AD /* Library.h */,
+				B352E90E170252AE0055D0AD /* Library.m */,
+				B352E909170252AE0055D0AD /* Author.h */,
+				B352E90A170252AE0055D0AD /* Author.m */,
+				B352E90F170252AE0055D0AD /* Sequence.h */,
+				B352E910170252AE0055D0AD /* Sequence.m */,
+				B352E90B170252AE0055D0AD /* Book.h */,
+				B352E90C170252AE0055D0AD /* Book.m */,
 			);
 			name = "Book Classes";
 			sourceTree = "<group>";
@@ -88,23 +102,12 @@
 		C3208BD916F2062100D0C24B /* Book Format Support */ = {
 			isa = PBXGroup;
 			children = (
-				C3208BDA16F2063300D0C24B /* FB2 */,
-				C3208BDB16F2064C00D0C24B /* BookDataSource.h */,
-				C3208BDC16F2064C00D0C24B /* BookDataSource.m */,
-			);
-			name = "Book Format Support";
-			sourceTree = "<group>";
-		};
-		C3208BDA16F2063300D0C24B /* FB2 */ = {
-			isa = PBXGroup;
-			children = (
-				C3208BCD16F205FD00D0C24B /* FB2.h */,
-				C3208BCE16F205FD00D0C24B /* FB2.m */,
-				C3208BCF16F205FD00D0C24B /* FB2Bin.h */,
-				C3208BD016F205FD00D0C24B /* FB2Bin.m */,
+				B352E8FF170251DF0055D0AD /* fb2 */,
+				B352E9001702522C0055D0AD /* BookDataSource.h */,
+				B352E9011702522C0055D0AD /* BookDataSource.m */,
 				C3A5717516F7586400310321 /* fb2_genre.strings */,
 			);
-			name = FB2;
+			name = "Book Format Support";
 			sourceTree = "<group>";
 		};
 		C3208BE116F209EC00D0C24B /* Resources */ = {
@@ -157,6 +160,8 @@
 		C3EA24D416CE8A0800A10941 /* BookExplorer DB */ = {
 			isa = PBXGroup;
 			children = (
+				B352E8F317024CAB0055D0AD /* NVTableView.h */,
+				B352E8F417024CAB0055D0AD /* NVTableView.m */,
 				C3EA24E016CE8A0800A10941 /* NVDocument.h */,
 				C3EA24E116CE8A0800A10941 /* NVDocument.m */,
 				C3EA24E316CE8A0800A10941 /* NVDocument.xib */,
@@ -250,13 +255,14 @@
 			files = (
 				C3EA24DB16CE8A0800A10941 /* main.m in Sources */,
 				C3EA24E216CE8A0800A10941 /* NVDocument.m in Sources */,
-				C3208BD316F205FD00D0C24B /* Author.m in Sources */,
-				C3208BD416F205FD00D0C24B /* Book.m in Sources */,
-				C3208BD516F205FD00D0C24B /* FB2.m in Sources */,
-				C3208BD616F205FD00D0C24B /* FB2Bin.m in Sources */,
-				C3208BD716F205FD00D0C24B /* Sequence.m in Sources */,
-				C3208BDD16F2064C00D0C24B /* BookDataSource.m in Sources */,
-				C3208BE016F2085400D0C24B /* Library.m in Sources */,
+				B352E8F517024CAB0055D0AD /* NVTableView.m in Sources */,
+				B352E9021702522C0055D0AD /* BookDataSource.m in Sources */,
+				B352E907170252400055D0AD /* FB2Bin.m in Sources */,
+				B352E908170252400055D0AD /* FB2.m in Sources */,
+				B352E911170252AE0055D0AD /* Author.m in Sources */,
+				B352E912170252AE0055D0AD /* Book.m in Sources */,
+				B352E913170252AE0055D0AD /* Library.m in Sources */,
+				B352E914170252AE0055D0AD /* Sequence.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

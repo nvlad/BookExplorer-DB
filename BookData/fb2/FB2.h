@@ -9,6 +9,8 @@
 #import <Foundation/Foundation.h>
 #import "BookDataSource.h"
 
+@class FB2Bin;
+
 @interface FB2: BookDataSource
 
 @property NSXMLDocument *doc;

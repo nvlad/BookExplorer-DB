@@ -7,6 +7,7 @@
 //
 
 #import "FB2.h"
+#import "FB2Bin.h"
 
 @implementation FB2
 
