@@ -11,13 +11,10 @@
 @interface NVTableView : NSTableView {
 
 	SEL deleteAction;
-	id target;
+//	id target;
 }
 
 -(SEL)deleteAction;
 -(void)setDeleteAction:(SEL)selector;
-
--(id)target;
--(void)setTarget:(id)anObject;
 
 @end

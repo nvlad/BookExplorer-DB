@@ -20,14 +20,6 @@
 	deleteAction = selector;
 }
 
--(id)target {
-	return target;
-}
-
--(void)setTarget:(id)anObject {
-	target = anObject;
-}
-
 - (id)initWithFrame:(NSRect)frame
 {
     self = [super initWithFrame:frame];
@@ -39,17 +31,20 @@
 
 -(void)keyDown:(NSEvent *)theEvent {
 	unichar key = [[theEvent charactersIgnoringModifiers] characterAtIndex:0];
-	if(key == NSDeleteCharacter)
-	{
-//		SEL action = NSSelectorFromString(self.onDeletePressed);
-		[self performDeleteAction];
-		return;
+	switch (key) {
+		case NSDeleteCharacter:
+			[self performDeleteAction];
+			break;
+		case ' ':
+			break;
+		default:
+			[super keyDown:theEvent];
+			break;
 	}
-	[super keyDown:theEvent];
 }
 
 -(void)performDeleteAction {
-	[target performSelector:deleteAction withObject:self];
+	[self.target performSelector:deleteAction withObject:self];
 }
 
 //- (void)drawRect:(NSRect)dirtyRect

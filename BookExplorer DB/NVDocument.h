@@ -14,7 +14,7 @@
 
 @class Library;
 
-@interface NVDocument : NSDocument <NSTableViewDataSource>
+@interface NVDocument : NSDocument <NSTableViewDataSource, NSTableViewDelegate>
 {
 	Library * library;
 }
@@ -23,6 +23,7 @@
 @property (unsafe_unretained) IBOutlet NSTextField *statusString;
 
 -(IBAction)onBooksAddMenu:(id)sender;
+-(IBAction)onViewModeMenu:(id)sender;
 -(IBAction)onDoubleClick:(id)sender;
 -(IBAction)onDeletePressed:(id)sender;
 

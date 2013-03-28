@@ -43,8 +43,8 @@ NSInteger currentViewMode = 0;
 	[super windowControllerDidLoadNib:aController];
 	// Add any code here that needs to be executed once the windowController has loaded the document's window.
 	[[self statusString] setStringValue:[NSString stringWithFormat:@"Authors %ld, Books %ld", [library.authors count], [library.books count]]];
-	[self.writterTableView setDoubleAction:@selector(onDoubleClick:)];
 	[self.writterTableView setTarget:self];
+	[self.writterTableView setDoubleAction:@selector(onDoubleClick:)];
 	[self.writterTableView setDeleteAction:@selector(onDeletePressed:)];
 }
 
@@ -187,6 +187,12 @@ NSInteger currentViewMode = 0;
 	NSInteger colId = [self.writterTableView columnWithIdentifier:identifer];
 	NSTableColumn *col = [self.writterTableView.tableColumns objectAtIndex:colId];
 	[col setWidth:width];
+}
+
+-(void)onViewModeMenu:(id)sender {
+	NSMenuItem *item = (NSMenuItem*)sender;
+	[self.viewMode setSelectedSegment:item.tag];
+	[self.viewMode performClick:self.viewMode];
 }
 
 - (IBAction)selectViewMode:(id)sender {
