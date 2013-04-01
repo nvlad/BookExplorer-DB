@@ -8,10 +8,9 @@
 
 #import <Foundation/Foundation.h>
 
-@class Book;
-@class Sequence;
+@class BookDataSource, Book, Sequence;
 
-@interface Author : NSObject <NSCoding>
+@interface Author : NSObject
 
 @property NSString *firstName;
 @property NSString *lastName;
@@ -19,13 +18,21 @@
 @property NSMutableArray *books;
 @property NSInteger bookCount;
 
-- (id)initWithBook:(Book*)book;
+-(id)initWithBookDataSource:(BookDataSource *)book;
 
-- (Sequence *)sequenceByTitle:(NSString *)title;
+-(Sequence *)sequenceByTitle:(NSString *)title;
 
-- (void)addBook:(Book *)book;
-- (void)addSequence:(Sequence *)sequence;
+-(void)addBook:(Book *)book;
+-(void)addSequence:(Sequence *)sequence;
 
-- (NSString*)description;
+-(void)removeBooks:(NSSet *)objects;
+-(void)removeBooksObject:(Book *)object;
+-(void)removeBooksAtIndexes:(NSIndexSet *)indexes;
+
+-(void)removeSequences:(NSSet *)objects;
+-(void)removeSequencesObject:(Sequence *)object;
+-(void)removeSequencesAtIndexes:(NSIndexSet *)indexes;
+
+-(NSString*)description;
 
 @end

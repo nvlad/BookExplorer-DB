@@ -8,7 +8,7 @@
 
 #import <Foundation/Foundation.h>
 
-@class Author, Sequence, Book;
+@class BookDataSource, Author, Sequence, Book;
 
 @interface Library : NSObject <NSCoding>
 
@@ -16,11 +16,23 @@
 @property NSMutableArray *sequences;
 @property NSMutableArray *books;
 
--(void)addBook:(Book *)book;
+-(NSInteger)getAuthorIndex:(BookDataSource *)book;
+-(NSInteger)getSequnceIndex:(BookDataSource *)book;
+-(NSInteger)getBookIndex:(BookDataSource *)book;
+
+-(void)addBook:(BookDataSource *)book;
 
 -(void)removeBooks:(NSSet *)objects;
 -(void)removeBooksObject:(Book *)object;
 -(void)removeBooksAtIndexes:(NSIndexSet *)indexes;
+
+-(void)removeSequences:(NSSet *)objects;
+-(void)removeSequencesObject:(Sequence	*)object;
+-(void)removeSequencesAtIndexes:(NSIndexSet *)indexes;
+
+-(void)removeAuthors:(NSSet *)objects;
+-(void)removeAuthorsObject:(Author *)object;
+-(void)removeAuthorsAtIndexes:(NSIndexSet *)indexes;
 
 -(void)loadBookFromURL:(NSURL *)url;
 -(void)loadBookFromFile:(NSString *)file;

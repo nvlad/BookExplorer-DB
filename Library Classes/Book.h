@@ -9,8 +9,10 @@
 #import <Foundation/Foundation.h>
 #import "BookDataSource.h"
 
+@class Author, Sequence;
+
 @interface NSString(FileUtils)
-+ (NSString*)PathForFile:(NSString*)filename;
++(NSString*)PathForFile:(NSString*)filename;
 @end
 
 
@@ -18,19 +20,17 @@
 
 @property BookDataSource *bookData;
 @property NSString *bookId;
-@property NSString *firstName;
-@property NSString *lastName;
-@property NSString *author;
-@property NSString *sequence;
+@property Author *author;
+@property Sequence *sequence;
 @property NSInteger sequenceNum;
 @property NSString *title;
 @property NSString *file;
 
-- (id)initWithBook:(BookDataSource *)book;
+-(id)initWithBook:(BookDataSource *)book;
 
-- (void)getBookInfo;
-- (void)getBookInfoFromFile:(NSString *)fileName;
+-(void)getBookInfo;
+-(void)getBookInfoFromFile:(NSString *)fileName;
 
-- (NSString*)description;
+-(NSString*)description;
 
 @end

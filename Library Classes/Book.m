@@ -7,6 +7,8 @@
 //
 
 #import "Book.h"
+#import "Sequence.h"
+#import "Author.h"
 
 @implementation NSString (FileUtils)
 
@@ -28,39 +30,38 @@
 #define kSequenceNum @"sequenceNum"
 #define kFile @"File"
 
-@synthesize bookData, bookId, firstName, lastName, author, title, sequence, sequenceNum, file;
+@synthesize bookData, bookId, author, sequence, sequenceNum, title, file;
 
 -(void)encodeWithCoder:(NSCoder *)aCoder {
 	[aCoder encodeObject:bookId forKey:kBookId];
-	[aCoder encodeObject:firstName forKey:kFirstName];
-	[aCoder encodeObject:lastName forKey:kLastName];
 	[aCoder encodeObject:title forKey:kTitle];
-	[aCoder encodeObject:sequence forKey:kSequence];
 	[aCoder encodeInt64:sequenceNum forKey:kSequenceNum];
 	[aCoder encodeObject:file forKey:kFile];
+	[aCoder encodeObject:[self.author firstName] forKey:kFirstName];
+	[aCoder encodeObject:[self.author lastName] forKey:kLastName];
+	[aCoder encodeObject:[self.sequence title] forKey:kSequence];
 }
-
 -(id)initWithCoder:(NSCoder *)aDecoder {
 	self = [super init];
 	bookId = [aDecoder decodeObjectForKey:kBookId];
-	firstName = [aDecoder decodeObjectForKey:kFirstName];
-	lastName = [aDecoder decodeObjectForKey:kLastName];
-	author = [NSString stringWithFormat:@"%@ %@", firstName, lastName];
 	title = [aDecoder decodeObjectForKey:kTitle];
-	sequence = [aDecoder decodeObjectForKey:kSequence];
 	sequenceNum = [aDecoder decodeInt64ForKey:kSequenceNum];
+	//	firstName = [aDecoder decodeObjectForKey:kFirstName];
+	//	lastName = [aDecoder decodeObjectForKey:kLastName];
+	//	author = [NSString stringWithFormat:@"%@ %@", firstName, lastName];
+	//	sequence = [aDecoder decodeObjectForKey:kSequence];
 	return self;
 }
 
-- (id)initWithBook:(BookDataSource*)book
-{
+-(id)initWithBook:(BookDataSource*)book {
 	if (self = [super init]) {
+		[self setBookId:[book bookId]];
 		[self setTitle:[book title]];
-		[self setFirstName:[book firstName]];
-		[self setLastName:[book lastName]];
-		[self setAuthor:[book author]];
-		[self setSequence:[book sequence]];
-		if (self.sequence) {
+//		[self setFirstName:[book firstName]];
+//		[self setLastName:[book lastName]];
+//		[self setAuthor:[book author]];
+//		[self setSequence:[book sequence]];
+		if (book.sequence) {
 			[self setSequenceNum:[book sequenceNum]];
 		}
 //        [self getBookInfo];
@@ -69,20 +70,16 @@
 }
 
 
-- (void)getBookInfo
-{
+-(void)getBookInfo {
 	if (self.bookData) {
 	}
 }
-
-- (void)getBookInfoFromFile:(NSString *)fileName
-{
+-(void)getBookInfoFromFile:(NSString *)fileName {
 }
 
--(NSString*)description
-{
+-(NSString*)description {
     if (self.sequence)
-        return [NSString stringWithFormat:@"%@ (Sequence: %@, Book No %ld)", self.title, self.sequence, self.sequenceNum];
+        return [NSString stringWithFormat:@"%@ (Sequence: %@, Book No %ld)", self.title, [self.sequence description], self.sequenceNum];
     else
         return [NSString stringWithString:self.title];
 }

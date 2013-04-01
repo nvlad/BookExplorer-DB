@@ -14,26 +14,24 @@
 
 @class Library;
 
-@interface NVDocument : NSDocument <NSTableViewDataSource, NSTableViewDelegate>
-{
+@interface NVDocument : NSDocument <NSTableViewDataSource, NSTableViewDelegate> {
 	Library * library;
 }
 
 @property IBOutlet NVTableView *writterTableView;
 @property (unsafe_unretained) IBOutlet NSTextField *statusString;
+@property (unsafe_unretained) IBOutlet NSSegmentedControl *viewMode;
 
 -(IBAction)onBooksAddMenu:(id)sender;
 -(IBAction)onViewModeMenu:(id)sender;
 -(IBAction)onDoubleClick:(id)sender;
 -(IBAction)onDeletePressed:(id)sender;
+-(IBAction)selectViewMode:(id)sender;
 
--(NSInteger)numberOfRowsInTableView:(NSTableView *)aTableView;
--(id)tableView:(NSTableView *)aTableView objectValueForTableColumn:(NSTableColumn *)aTableColumn row:(NSInteger)rowIndex;
-
-@property (unsafe_unretained) IBOutlet NSSegmentedControl *viewMode;
 -(void)columnWithIdentifer:(NSString *)identifer setHidden:(BOOL)hidden;
 -(void)columnWithIdentifer:(NSString *)identifer setWidth:(CGFloat)width;
 
--(IBAction)selectViewMode:(id)sender;
+-(NSInteger)numberOfRowsInTableView:(NSTableView *)aTableView;
+-(id)tableView:(NSTableView *)aTableView objectValueForTableColumn:(NSTableColumn *)aTableColumn row:(NSInteger)rowIndex;
 
 @end

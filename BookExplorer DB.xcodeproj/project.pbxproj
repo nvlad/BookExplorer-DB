@@ -44,7 +44,7 @@
 		B352E90F170252AE0055D0AD /* Sequence.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = Sequence.h; path = "Library Classes/Sequence.h"; sourceTree = "<group>"; };
 		B352E910170252AE0055D0AD /* Sequence.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = Sequence.m; path = "Library Classes/Sequence.m"; sourceTree = "<group>"; };
 		C3A5717416F7586400310321 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/fb2_genre.strings; sourceTree = "<group>"; };
-		C3EA24CB16CE8A0800A10941 /* BookExplorer DB.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "BookExplorer DB.app"; sourceTree = BUILT_PRODUCTS_DIR; };
+		C3EA24CB16CE8A0800A10941 /* BookExplorer DB.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; name = "BookExplorer DB.app"; path = BookExplorer.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		C3EA24CE16CE8A0800A10941 /* Cocoa.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Cocoa.framework; path = System/Library/Frameworks/Cocoa.framework; sourceTree = SDKROOT; };
 		C3EA24D116CE8A0800A10941 /* AppKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AppKit.framework; path = System/Library/Frameworks/AppKit.framework; sourceTree = SDKROOT; };
 		C3EA24D216CE8A0800A10941 /* CoreData.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreData.framework; path = System/Library/Frameworks/CoreData.framework; sourceTree = SDKROOT; };
@@ -80,6 +80,7 @@
 				B352E906170252400055D0AD /* FB2.m */,
 				B352E903170252400055D0AD /* FB2Bin.h */,
 				B352E904170252400055D0AD /* FB2Bin.m */,
+				C3A5717516F7586400310321 /* fb2_genre.strings */,
 			);
 			name = fb2;
 			sourceTree = "<group>";
@@ -105,7 +106,6 @@
 				B352E8FF170251DF0055D0AD /* fb2 */,
 				B352E9001702522C0055D0AD /* BookDataSource.h */,
 				B352E9011702522C0055D0AD /* BookDataSource.m */,
-				C3A5717516F7586400310321 /* fb2_genre.strings */,
 			);
 			name = "Book Format Support";
 			sourceTree = "<group>";

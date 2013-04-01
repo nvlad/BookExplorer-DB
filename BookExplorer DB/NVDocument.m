@@ -18,8 +18,7 @@
 
 NSInteger currentViewMode = 0;
 
-- (id)init
-{
+-(id)init {
     self = [super init];
     if (self) {
 		// Add your subclass-specific initialization here.
@@ -31,15 +30,13 @@ NSInteger currentViewMode = 0;
     return self;
 }
 
-- (NSString *)windowNibName
-{
+-(NSString *)windowNibName {
 	// Override returning the nib file name of the document
 	// If you need to use a subclass of NSWindowController or if your document supports multiple NSWindowControllers, you should remove this method and override -makeWindowControllers instead.
 	return @"NVDocument";
 }
 
-- (void)windowControllerDidLoadNib:(NSWindowController *)aController
-{
+-(void)windowControllerDidLoadNib:(NSWindowController *)aController {
 	[super windowControllerDidLoadNib:aController];
 	// Add any code here that needs to be executed once the windowController has loaded the document's window.
 	[[self statusString] setStringValue:[NSString stringWithFormat:@"Authors %ld, Books %ld", [library.authors count], [library.books count]]];
@@ -48,18 +45,15 @@ NSInteger currentViewMode = 0;
 	[self.writterTableView setDeleteAction:@selector(onDeletePressed:)];
 }
 
-+ (BOOL)autosavesInPlace
-{
++(BOOL)autosavesInPlace {
     return YES;
 }
 
-- (BOOL)validateMenuItem:(NSMenuItem *)menuItem
-{
+-(BOOL)validateMenuItem:(NSMenuItem *)menuItem {
 	return YES;
 }
 
--(IBAction)onBooksAddMenu:(id)sender
-{
+-(void)onBooksAddMenu:(id)sender {
 	NSOpenPanel* openDlg = [NSOpenPanel openPanel];
 	[openDlg setCanChooseFiles:YES];
 	[openDlg setAllowsMultipleSelection:YES];
@@ -77,21 +71,11 @@ NSInteger currentViewMode = 0;
 		[[self statusString] setStringValue:[NSString stringWithFormat:@"Authors %ld, Books %ld", [library.authors count], [library.books count]]];
 	}
 }
-
--(void)onDeletePressed:(id)sender {
-	switch (currentViewMode) {
-		case 0:
-			NSLog(@"delete Author!");
-			break;
-		case 1:
-			NSLog(@"delete Sequence!");
-			break;
-		case 2:
-			NSLog(@"delete Book!");
-			break;
-	}
+-(void)onViewModeMenu:(id)sender {
+	NSMenuItem *item = (NSMenuItem*)sender;
+	[self.viewMode setSelectedSegment:item.tag];
+	[self.viewMode performClick:self.viewMode];
 }
-
 -(void)onDoubleClick:(id)sender {
 	if (currentViewMode == 2) {
 		NSIndexSet *selectedRow = [self.writterTableView selectedRowIndexes];
@@ -100,14 +84,42 @@ NSInteger currentViewMode = 0;
 		}
 	}
 }
-
--(void)keyDown:(NSEvent*)event
-{
-	NSLog(@"keyDown");
+-(void)onDeletePressed:(id)sender {
+	switch (currentViewMode) {
+		case 0:
+			NSLog(@"delete Author!");
+			
+			break;
+		case 1:
+			NSLog(@"delete Sequence!");
+			[library removeSequencesAtIndexes:[self.writterTableView selectedRowIndexes]];
+			break;
+		case 2:
+			NSLog(@"delete Book!");
+			[library removeBooksAtIndexes:[self.writterTableView selectedRowIndexes]];
+			break;
+	}
+	[self.writterTableView deselectAll:self];
+	[[self statusString] setStringValue:[NSString stringWithFormat:@"Authors %ld, Books %ld", [library.authors count], [library.books count]]];
+	[self.writterTableView reloadData];
+}
+-(void)selectViewMode:(id)sender {
+	NSInteger segment = [self.viewMode selectedSegment];
+	if (currentViewMode != segment) {
+		currentViewMode = segment;
+		NSLog(@"Switch to %ld segment", currentViewMode);
+		[self.writterTableView reloadData];
+	}
 }
 
-- (NSData *)dataOfType:(NSString *)typeName error:(NSError **)outError
-{
+-(void)setLibrary:(Library *)data {
+	if (library != data) {
+		//		library = [data mutableCopy];
+		library = data;
+		NSLog(@"%@", library);
+	}
+}
+-(NSData *)dataOfType:(NSString *)typeName error:(NSError **)outError {
 	NSLog(@"Document type: %@", typeName);
 	if ([typeName isEqualToString:kBookExplorerDocumentType]) {
 		NSData *data;
@@ -138,18 +150,7 @@ NSInteger currentViewMode = 0;
 	//	@throw exception;
 	return nil;
 }
-
-- (void)setLibrary:(Library *)data
-{
-	if (library != data) {
-//		library = [data mutableCopy];
-		library = data;
-		NSLog(@"%@", library);
-	}
-}
-
-- (BOOL)readFromData:(NSData *)data ofType:(NSString *)typeName error:(NSError **)outError
-{
+-(BOOL)readFromData:(NSData *)data ofType:(NSString *)typeName error:(NSError **)outError {
 	NSLog(@"readFromData");
 	BOOL result = NO;
 	// we only recognize one data type.  It is a programming error to call this method with any other typeName
@@ -185,37 +186,18 @@ NSInteger currentViewMode = 0;
 	return YES;
 }
 
-- (void)columnWithIdentifer:(NSString *)identifer setHidden:(BOOL)hidden
-{
+-(void)columnWithIdentifer:(NSString *)identifer setHidden:(BOOL)hidden {
 	NSInteger colId = [self.writterTableView columnWithIdentifier:identifer];
 	NSTableColumn *col = [self.writterTableView.tableColumns objectAtIndex:colId];
 	[col setHidden:hidden];
 }
-
-- (void)columnWithIdentifer:(NSString *)identifer setWidth:(CGFloat)width
-{
+-(void)columnWithIdentifer:(NSString *)identifer setWidth:(CGFloat)width {
 	NSInteger colId = [self.writterTableView columnWithIdentifier:identifer];
 	NSTableColumn *col = [self.writterTableView.tableColumns objectAtIndex:colId];
 	[col setWidth:width];
 }
 
--(void)onViewModeMenu:(id)sender {
-	NSMenuItem *item = (NSMenuItem*)sender;
-	[self.viewMode setSelectedSegment:item.tag];
-	[self.viewMode performClick:self.viewMode];
-}
-
-- (IBAction)selectViewMode:(id)sender {
-	NSInteger segment = [self.viewMode selectedSegment];
-	if (currentViewMode != segment) {
-		currentViewMode = segment;
-		NSLog(@"Switch to %ld segment", currentViewMode);
-		[self.writterTableView reloadData];
-	}
-}
-
-- (NSInteger)numberOfRowsInTableView:(NSTableView *)aTableView
-{
+-(NSInteger)numberOfRowsInTableView:(NSTableView *)aTableView {
 	NSInteger count = 0;
 	switch (currentViewMode) {
 		case 0:
@@ -245,9 +227,7 @@ NSInteger currentViewMode = 0;
 	NSLog(@"Row in Table: %ld", count);
 	return count;
 }
-
-- (id)tableView:(NSTableView *)aTableView objectValueForTableColumn:(NSTableColumn *)aTableColumn row:(NSInteger)rowIndex
-{
+-(id)tableView:(NSTableView *)aTableView objectValueForTableColumn:(NSTableColumn *)aTableColumn row:(NSInteger)rowIndex {
 	NSString *identifier = [aTableColumn identifier];
 	NSString *text;
 	Author *author;
@@ -271,11 +251,13 @@ NSInteger currentViewMode = 0;
 			break;
 		case 2:
 			text = [[library.books objectAtIndex:rowIndex] valueForKey:identifier];
+			NSLog(@"%@: %@", identifier, text);
 			if ([identifier isEqual:@"sequenceNum"] && [[text description] isEqual:@"0"]) {
-				//				NSLog(@"typeof text \"%@\"", [[text description] isEqual:@"0"]);
 				Book *book = [library.books objectAtIndex:rowIndex];
 				if (![book sequence] || [[book sequence] isEqual:@""])
 					text = @"";
+			} else if ([identifier isEqual:@"author"] || [identifier isEqual:@"sequence"]) {
+				text = [NSString stringWithFormat:@"%@", [text description]];
 			}
 			break;
 	}
@@ -285,6 +267,10 @@ NSInteger currentViewMode = 0;
 	NSCell *cell = [[NSCell alloc] initTextCell:text];
 	if ([identifier isEqual:@"sequenceNum"] || [identifier isEqual:@"bookCount"])
 		[cell setAlignment:NSCenterTextAlignment];
+	if ([identifier isEqual:@"title"]) {
+		[cell setWraps:NO];
+		[cell setLineBreakMode:NSLineBreakByTruncatingTail];
+	}
 	return cell;
 	//	return nil;
 	//	return [[library.Books objectAtIndex:rowIndex] author];

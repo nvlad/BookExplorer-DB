@@ -18,8 +18,12 @@
 @property NSMutableArray *books;
 @property NSInteger bookCount;
 
-- (id)init:(NSString*)title withAuthor:(Author *)author;
+-(id)init:(NSString*)title withAuthor:(Author *)author;
 
-- (void)addBook:(Book *)book;
+-(void)addBook:(Book *)book;
+
+-(void)removeBooks:(NSSet *)objects;
+-(void)removeBooksObject:(Book *)object;
+-(void)removeBooksAtIndexes:(NSIndexSet *)indexes;
 
 @end

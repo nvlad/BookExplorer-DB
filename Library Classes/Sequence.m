@@ -13,8 +13,7 @@
 
 @synthesize title, author, books, bookCount;
 
-- (id)init:(NSString *)aTitle withAuthor:(Author *)aAuthor
-{
+-(id)init:(NSString *)aTitle withAuthor:(Author *)aAuthor {
 	self = [super init];
 	if (self) {
 		title = aTitle;
@@ -26,13 +25,28 @@
 	return self;
 }
 
-- (void)addBook:(Book *)book
-{
+-(void)addBook:(Book *)book {
 	if (!books)
 		books = [[NSMutableArray alloc] init];
 	[books addObject:book];
 	bookCount = [books count];
 	NSLog(@"Sequence \"%@\" avaible %ld of books", title, bookCount);
 }
+
+-(void)removeBooks:(NSSet *)objects {
+	
+}
+-(void)removeBooksObject:(Book *)object {
+	[books removeObject:object];
+	bookCount = [books count];
+}
+-(void)removeBooksAtIndexes:(NSIndexSet *)indexes {
+	
+}
+
+-(NSString*)description {
+	return [NSString stringWithFormat:@"%@", title];
+}
+
 
 @end
