@@ -159,6 +159,7 @@
 		if ([author bookCount] == 0) {
 			[_authors removeObject:author];
 		}
+		[[object authors] removeObject:bookAuthor];
 	}
 	[_books removeObject:object];
 }
