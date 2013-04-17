@@ -220,8 +220,8 @@ NSInteger currentViewMode = 0;
 			count = [library.books count];
 			[self columnWithIdentifer:@"bookCount" setHidden:YES];
 			[self columnWithIdentifer:@"title" setHidden:NO];
-//			[self columnWithIdentifer:@"sequence" setHidden:NO];
-//			[self columnWithIdentifer:@"sequenceNum" setHidden:NO];
+			[self columnWithIdentifer:@"sequence" setHidden:NO];
+			[self columnWithIdentifer:@"sequenceNum" setHidden:NO];
 			break;
 	}
 	NSLog(@"Row in Table: %ld", count);

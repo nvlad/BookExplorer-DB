@@ -61,5 +61,8 @@
 -(NSString *)sequence {
 	return [[_sequences valueForKey:@"title"] componentsJoinedByString:@", "];
 }
+-(NSString *)sequenceNum {
+	return [[_sequences valueForKey:@"part"] componentsJoinedByString:@", "];
+}
 
 @end

@@ -30,5 +30,6 @@
 
 -(NSString *)author;
 -(NSString *)sequence;
+-(NSString *)sequenceNum;
 
 @end

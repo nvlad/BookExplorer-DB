@@ -122,8 +122,8 @@
 																andWithSequence:sequence
 																		  andPart:[bookSourceSequence part]];
 				[sequence addBooksObject:bookSequence];
+				[book addSequencesObject:bookSequence];
 			}
-			[book addSequencesObject:bookSequence];
 		}
 	}
 }
