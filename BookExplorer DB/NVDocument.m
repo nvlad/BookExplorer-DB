@@ -7,10 +7,10 @@
 //
 
 #import "NVDocument.h"
-#import "Library.h"
-#import "Author.h"
-#import "Sequence.h"
-#import "Book.h"
+#import "NVLibrary.h"
+#import "NVAuthor.h"
+#import "NVSequence.h"
+#import "NVBook.h"
 
 @implementation NVDocument
 
@@ -22,7 +22,7 @@ NSInteger currentViewMode = 0;
     self = [super init];
     if (self) {
 		// Add your subclass-specific initialization here.
-		 library = [[Library alloc] init];
+		 library = [[NVLibrary alloc] init];
 //		 [books addObject:@"Hello, World!"];
 		 [self setDisplayName:@"BookExplorer - Untitled"];
 //		 [self setDraft:YES];
@@ -66,8 +66,8 @@ NSInteger currentViewMode = 0;
 		for (int i = 0; i < [urls count]; i++) {
 			NSURL *url = [urls objectAtIndex:i];
 			[library loadBookFromURL:url];
+			[self.writterTableView reloadData];
 		}
-		[self.writterTableView reloadData];
 		[[self statusString] setStringValue:[NSString stringWithFormat:@"Authors %ld, Books %ld", [library.authors count], [library.books count]]];
 	}
 }
@@ -112,7 +112,7 @@ NSInteger currentViewMode = 0;
 	}
 }
 
--(void)setLibrary:(Library *)data {
+-(void)setLibrary:(NVLibrary *)data {
 	if (library != data) {
 		//		library = [data mutableCopy];
 		library = data;
@@ -220,8 +220,8 @@ NSInteger currentViewMode = 0;
 			count = [library.books count];
 			[self columnWithIdentifer:@"bookCount" setHidden:YES];
 			[self columnWithIdentifer:@"title" setHidden:NO];
-			[self columnWithIdentifer:@"sequence" setHidden:NO];
-			[self columnWithIdentifer:@"sequenceNum" setHidden:NO];
+//			[self columnWithIdentifer:@"sequence" setHidden:NO];
+//			[self columnWithIdentifer:@"sequenceNum" setHidden:NO];
 			break;
 	}
 	NSLog(@"Row in Table: %ld", count);
@@ -230,13 +230,13 @@ NSInteger currentViewMode = 0;
 -(id)tableView:(NSTableView *)aTableView objectValueForTableColumn:(NSTableColumn *)aTableColumn row:(NSInteger)rowIndex {
 	NSString *identifier = [aTableColumn identifier];
 	NSString *text;
-	Author *author;
-	Sequence *sequence;
+	NVAuthor *author;
+	NVSequence *sequence;
 	switch (currentViewMode) {
 		case 0:
 			author = [library.authors objectAtIndex:rowIndex];
 			if ([identifier isEqual:@"author"])
-				text = [NSString stringWithFormat:@"%@", author];
+				text = [NSString stringWithFormat:@"%@", [author name]];
 			else
 				text = [author valueForKey:identifier];
 			break;
@@ -253,8 +253,8 @@ NSInteger currentViewMode = 0;
 			text = [[library.books objectAtIndex:rowIndex] valueForKey:identifier];
 			NSLog(@"%@: %@", identifier, text);
 			if ([identifier isEqual:@"sequenceNum"] && [[text description] isEqual:@"0"]) {
-				Book *book = [library.books objectAtIndex:rowIndex];
-				if (![book sequence] || [[book sequence] isEqual:@""])
+				NVBook *book = [library.books objectAtIndex:rowIndex];
+//				if (![book sequence] || [[book sequence] isEqual:@""])
 					text = @"";
 			} else if ([identifier isEqual:@"author"] || [identifier isEqual:@"sequence"]) {
 				text = [NSString stringWithFormat:@"%@", [text description]];
@@ -272,8 +272,6 @@ NSInteger currentViewMode = 0;
 		[cell setLineBreakMode:NSLineBreakByTruncatingTail];
 	}
 	return cell;
-	//	return nil;
-	//	return [[library.Books objectAtIndex:rowIndex] author];
 }
 
 @end

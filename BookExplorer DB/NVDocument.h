@@ -12,10 +12,10 @@
 #define kBookExplorerDocumentType @"com.nvlad.bookexplorer.document"
 #define kBookExplorerExtension @"nbl"
 
-@class Library;
+@class NVLibrary;
 
 @interface NVDocument : NSDocument <NSTableViewDataSource, NSTableViewDelegate> {
-	Library * library;
+	NVLibrary * library;
 }
 
 @property IBOutlet NVTableView *writterTableView;

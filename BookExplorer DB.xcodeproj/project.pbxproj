@@ -8,13 +8,18 @@
 
 /* Begin PBXBuildFile section */
 		B352E8F517024CAB0055D0AD /* NVTableView.m in Sources */ = {isa = PBXBuildFile; fileRef = B352E8F417024CAB0055D0AD /* NVTableView.m */; };
-		B352E9021702522C0055D0AD /* BookDataSource.m in Sources */ = {isa = PBXBuildFile; fileRef = B352E9011702522C0055D0AD /* BookDataSource.m */; };
 		B352E907170252400055D0AD /* FB2Bin.m in Sources */ = {isa = PBXBuildFile; fileRef = B352E904170252400055D0AD /* FB2Bin.m */; };
 		B352E908170252400055D0AD /* FB2.m in Sources */ = {isa = PBXBuildFile; fileRef = B352E906170252400055D0AD /* FB2.m */; };
-		B352E911170252AE0055D0AD /* Author.m in Sources */ = {isa = PBXBuildFile; fileRef = B352E90A170252AE0055D0AD /* Author.m */; };
-		B352E912170252AE0055D0AD /* Book.m in Sources */ = {isa = PBXBuildFile; fileRef = B352E90C170252AE0055D0AD /* Book.m */; };
-		B352E913170252AE0055D0AD /* Library.m in Sources */ = {isa = PBXBuildFile; fileRef = B352E90E170252AE0055D0AD /* Library.m */; };
-		B352E914170252AE0055D0AD /* Sequence.m in Sources */ = {isa = PBXBuildFile; fileRef = B352E910170252AE0055D0AD /* Sequence.m */; };
+		B3CCDFB4171DF104004BC5AF /* NVAuthor.m in Sources */ = {isa = PBXBuildFile; fileRef = B3CCDFA1171DF104004BC5AF /* NVAuthor.m */; };
+		B3CCDFB5171DF104004BC5AF /* NVBook.m in Sources */ = {isa = PBXBuildFile; fileRef = B3CCDFA3171DF104004BC5AF /* NVBook.m */; };
+		B3CCDFB6171DF104004BC5AF /* NVBookAuthor.m in Sources */ = {isa = PBXBuildFile; fileRef = B3CCDFA5171DF104004BC5AF /* NVBookAuthor.m */; };
+		B3CCDFB7171DF104004BC5AF /* NVBookSequence.m in Sources */ = {isa = PBXBuildFile; fileRef = B3CCDFA7171DF104004BC5AF /* NVBookSequence.m */; };
+		B3CCDFB8171DF104004BC5AF /* NVBookSource.m in Sources */ = {isa = PBXBuildFile; fileRef = B3CCDFA9171DF104004BC5AF /* NVBookSource.m */; };
+		B3CCDFB9171DF104004BC5AF /* NVBookSourceSequence.m in Sources */ = {isa = PBXBuildFile; fileRef = B3CCDFAB171DF104004BC5AF /* NVBookSourceSequence.m */; };
+		B3CCDFBA171DF104004BC5AF /* NVLibrary.m in Sources */ = {isa = PBXBuildFile; fileRef = B3CCDFAD171DF104004BC5AF /* NVLibrary.m */; };
+		B3CCDFBB171DF104004BC5AF /* NVPerson.m in Sources */ = {isa = PBXBuildFile; fileRef = B3CCDFAF171DF104004BC5AF /* NVPerson.m */; };
+		B3CCDFBC171DF104004BC5AF /* NVSequence.m in Sources */ = {isa = PBXBuildFile; fileRef = B3CCDFB1171DF104004BC5AF /* NVSequence.m */; };
+		B3CCDFBD171DF104004BC5AF /* NVSequenceAuthor.m in Sources */ = {isa = PBXBuildFile; fileRef = B3CCDFB3171DF104004BC5AF /* NVSequenceAuthor.m */; };
 		C3A5717316F7586400310321 /* fb2_genre.strings in Resources */ = {isa = PBXBuildFile; fileRef = C3A5717516F7586400310321 /* fb2_genre.strings */; };
 		C3EA24CF16CE8A0800A10941 /* Cocoa.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C3EA24CE16CE8A0800A10941 /* Cocoa.framework */; };
 		C3EA24D916CE8A0800A10941 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = C3EA24D716CE8A0800A10941 /* InfoPlist.strings */; };
@@ -29,22 +34,32 @@
 /* Begin PBXFileReference section */
 		B352E8F317024CAB0055D0AD /* NVTableView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NVTableView.h; sourceTree = "<group>"; };
 		B352E8F417024CAB0055D0AD /* NVTableView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NVTableView.m; sourceTree = "<group>"; };
-		B352E9001702522C0055D0AD /* BookDataSource.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = BookDataSource.h; path = BookData/BookDataSource.h; sourceTree = "<group>"; };
-		B352E9011702522C0055D0AD /* BookDataSource.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = BookDataSource.m; path = BookData/BookDataSource.m; sourceTree = "<group>"; };
 		B352E903170252400055D0AD /* FB2Bin.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = FB2Bin.h; path = BookData/fb2/FB2Bin.h; sourceTree = "<group>"; };
 		B352E904170252400055D0AD /* FB2Bin.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = FB2Bin.m; path = BookData/fb2/FB2Bin.m; sourceTree = "<group>"; };
 		B352E905170252400055D0AD /* FB2.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = FB2.h; path = BookData/fb2/FB2.h; sourceTree = "<group>"; };
 		B352E906170252400055D0AD /* FB2.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = FB2.m; path = BookData/fb2/FB2.m; sourceTree = "<group>"; };
-		B352E909170252AE0055D0AD /* Author.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = Author.h; path = "Library Classes/Author.h"; sourceTree = "<group>"; };
-		B352E90A170252AE0055D0AD /* Author.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = Author.m; path = "Library Classes/Author.m"; sourceTree = "<group>"; };
-		B352E90B170252AE0055D0AD /* Book.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = Book.h; path = "Library Classes/Book.h"; sourceTree = "<group>"; };
-		B352E90C170252AE0055D0AD /* Book.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = Book.m; path = "Library Classes/Book.m"; sourceTree = "<group>"; };
-		B352E90D170252AE0055D0AD /* Library.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = Library.h; path = "Library Classes/Library.h"; sourceTree = "<group>"; };
-		B352E90E170252AE0055D0AD /* Library.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = Library.m; path = "Library Classes/Library.m"; sourceTree = "<group>"; };
-		B352E90F170252AE0055D0AD /* Sequence.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = Sequence.h; path = "Library Classes/Sequence.h"; sourceTree = "<group>"; };
-		B352E910170252AE0055D0AD /* Sequence.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = Sequence.m; path = "Library Classes/Sequence.m"; sourceTree = "<group>"; };
+		B3CCDFA0171DF104004BC5AF /* NVAuthor.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NVAuthor.h; sourceTree = "<group>"; };
+		B3CCDFA1171DF104004BC5AF /* NVAuthor.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NVAuthor.m; sourceTree = "<group>"; };
+		B3CCDFA2171DF104004BC5AF /* NVBook.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NVBook.h; sourceTree = "<group>"; };
+		B3CCDFA3171DF104004BC5AF /* NVBook.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NVBook.m; sourceTree = "<group>"; };
+		B3CCDFA4171DF104004BC5AF /* NVBookAuthor.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NVBookAuthor.h; sourceTree = "<group>"; };
+		B3CCDFA5171DF104004BC5AF /* NVBookAuthor.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NVBookAuthor.m; sourceTree = "<group>"; };
+		B3CCDFA6171DF104004BC5AF /* NVBookSequence.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NVBookSequence.h; sourceTree = "<group>"; };
+		B3CCDFA7171DF104004BC5AF /* NVBookSequence.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NVBookSequence.m; sourceTree = "<group>"; };
+		B3CCDFA8171DF104004BC5AF /* NVBookSource.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NVBookSource.h; sourceTree = "<group>"; };
+		B3CCDFA9171DF104004BC5AF /* NVBookSource.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NVBookSource.m; sourceTree = "<group>"; };
+		B3CCDFAA171DF104004BC5AF /* NVBookSourceSequence.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NVBookSourceSequence.h; sourceTree = "<group>"; };
+		B3CCDFAB171DF104004BC5AF /* NVBookSourceSequence.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NVBookSourceSequence.m; sourceTree = "<group>"; };
+		B3CCDFAC171DF104004BC5AF /* NVLibrary.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NVLibrary.h; sourceTree = "<group>"; };
+		B3CCDFAD171DF104004BC5AF /* NVLibrary.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NVLibrary.m; sourceTree = "<group>"; };
+		B3CCDFAE171DF104004BC5AF /* NVPerson.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NVPerson.h; sourceTree = "<group>"; };
+		B3CCDFAF171DF104004BC5AF /* NVPerson.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NVPerson.m; sourceTree = "<group>"; };
+		B3CCDFB0171DF104004BC5AF /* NVSequence.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NVSequence.h; sourceTree = "<group>"; };
+		B3CCDFB1171DF104004BC5AF /* NVSequence.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NVSequence.m; sourceTree = "<group>"; };
+		B3CCDFB2171DF104004BC5AF /* NVSequenceAuthor.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NVSequenceAuthor.h; sourceTree = "<group>"; };
+		B3CCDFB3171DF104004BC5AF /* NVSequenceAuthor.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NVSequenceAuthor.m; sourceTree = "<group>"; };
 		C3A5717416F7586400310321 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/fb2_genre.strings; sourceTree = "<group>"; };
-		C3EA24CB16CE8A0800A10941 /* BookExplorer DB.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; name = "BookExplorer DB.app"; path = BookExplorer.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		C3EA24CB16CE8A0800A10941 /* BookExplorer.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = BookExplorer.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		C3EA24CE16CE8A0800A10941 /* Cocoa.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Cocoa.framework; path = System/Library/Frameworks/Cocoa.framework; sourceTree = SDKROOT; };
 		C3EA24D116CE8A0800A10941 /* AppKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AppKit.framework; path = System/Library/Frameworks/AppKit.framework; sourceTree = SDKROOT; };
 		C3EA24D216CE8A0800A10941 /* CoreData.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreData.framework; path = System/Library/Frameworks/CoreData.framework; sourceTree = SDKROOT; };
@@ -85,17 +100,38 @@
 			name = fb2;
 			sourceTree = "<group>";
 		};
+		B3CCDF9F171DF104004BC5AF /* Library Classes */ = {
+			isa = PBXGroup;
+			children = (
+				B3CCDFA0171DF104004BC5AF /* NVAuthor.h */,
+				B3CCDFA1171DF104004BC5AF /* NVAuthor.m */,
+				B3CCDFA2171DF104004BC5AF /* NVBook.h */,
+				B3CCDFA3171DF104004BC5AF /* NVBook.m */,
+				B3CCDFA4171DF104004BC5AF /* NVBookAuthor.h */,
+				B3CCDFA5171DF104004BC5AF /* NVBookAuthor.m */,
+				B3CCDFA6171DF104004BC5AF /* NVBookSequence.h */,
+				B3CCDFA7171DF104004BC5AF /* NVBookSequence.m */,
+				B3CCDFA8171DF104004BC5AF /* NVBookSource.h */,
+				B3CCDFA9171DF104004BC5AF /* NVBookSource.m */,
+				B3CCDFAA171DF104004BC5AF /* NVBookSourceSequence.h */,
+				B3CCDFAB171DF104004BC5AF /* NVBookSourceSequence.m */,
+				B3CCDFAC171DF104004BC5AF /* NVLibrary.h */,
+				B3CCDFAD171DF104004BC5AF /* NVLibrary.m */,
+				B3CCDFAE171DF104004BC5AF /* NVPerson.h */,
+				B3CCDFAF171DF104004BC5AF /* NVPerson.m */,
+				B3CCDFB0171DF104004BC5AF /* NVSequence.h */,
+				B3CCDFB1171DF104004BC5AF /* NVSequence.m */,
+				B3CCDFB2171DF104004BC5AF /* NVSequenceAuthor.h */,
+				B3CCDFB3171DF104004BC5AF /* NVSequenceAuthor.m */,
+			);
+			path = "Library Classes";
+			sourceTree = "<group>";
+		};
 		C3208BD816F2060C00D0C24B /* Book Classes */ = {
 			isa = PBXGroup;
 			children = (
-				B352E90D170252AE0055D0AD /* Library.h */,
-				B352E90E170252AE0055D0AD /* Library.m */,
-				B352E909170252AE0055D0AD /* Author.h */,
-				B352E90A170252AE0055D0AD /* Author.m */,
-				B352E90F170252AE0055D0AD /* Sequence.h */,
-				B352E910170252AE0055D0AD /* Sequence.m */,
-				B352E90B170252AE0055D0AD /* Book.h */,
-				B352E90C170252AE0055D0AD /* Book.m */,
+				B3CCDF9F171DF104004BC5AF /* Library Classes */,
+				C3208BD916F2062100D0C24B /* Book Format Support */,
 			);
 			name = "Book Classes";
 			sourceTree = "<group>";
@@ -104,8 +140,6 @@
 			isa = PBXGroup;
 			children = (
 				B352E8FF170251DF0055D0AD /* fb2 */,
-				B352E9001702522C0055D0AD /* BookDataSource.h */,
-				B352E9011702522C0055D0AD /* BookDataSource.m */,
 			);
 			name = "Book Format Support";
 			sourceTree = "<group>";
@@ -122,7 +156,6 @@
 		C3EA24C216CE8A0800A10941 = {
 			isa = PBXGroup;
 			children = (
-				C3208BD916F2062100D0C24B /* Book Format Support */,
 				C3208BD816F2060C00D0C24B /* Book Classes */,
 				C3EA24D416CE8A0800A10941 /* BookExplorer DB */,
 				C3EA24CD16CE8A0800A10941 /* Frameworks */,
@@ -133,7 +166,7 @@
 		C3EA24CC16CE8A0800A10941 /* Products */ = {
 			isa = PBXGroup;
 			children = (
-				C3EA24CB16CE8A0800A10941 /* BookExplorer DB.app */,
+				C3EA24CB16CE8A0800A10941 /* BookExplorer.app */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -201,7 +234,7 @@
 			);
 			name = BookExplorer;
 			productName = "BookExplorer DB";
-			productReference = C3EA24CB16CE8A0800A10941 /* BookExplorer DB.app */;
+			productReference = C3EA24CB16CE8A0800A10941 /* BookExplorer.app */;
 			productType = "com.apple.product-type.application";
 		};
 /* End PBXNativeTarget section */
@@ -256,13 +289,18 @@
 				C3EA24DB16CE8A0800A10941 /* main.m in Sources */,
 				C3EA24E216CE8A0800A10941 /* NVDocument.m in Sources */,
 				B352E8F517024CAB0055D0AD /* NVTableView.m in Sources */,
-				B352E9021702522C0055D0AD /* BookDataSource.m in Sources */,
 				B352E907170252400055D0AD /* FB2Bin.m in Sources */,
 				B352E908170252400055D0AD /* FB2.m in Sources */,
-				B352E911170252AE0055D0AD /* Author.m in Sources */,
-				B352E912170252AE0055D0AD /* Book.m in Sources */,
-				B352E913170252AE0055D0AD /* Library.m in Sources */,
-				B352E914170252AE0055D0AD /* Sequence.m in Sources */,
+				B3CCDFB4171DF104004BC5AF /* NVAuthor.m in Sources */,
+				B3CCDFB5171DF104004BC5AF /* NVBook.m in Sources */,
+				B3CCDFB6171DF104004BC5AF /* NVBookAuthor.m in Sources */,
+				B3CCDFB7171DF104004BC5AF /* NVBookSequence.m in Sources */,
+				B3CCDFB8171DF104004BC5AF /* NVBookSource.m in Sources */,
+				B3CCDFB9171DF104004BC5AF /* NVBookSourceSequence.m in Sources */,
+				B3CCDFBA171DF104004BC5AF /* NVLibrary.m in Sources */,
+				B3CCDFBB171DF104004BC5AF /* NVPerson.m in Sources */,
+				B3CCDFBC171DF104004BC5AF /* NVSequence.m in Sources */,
+				B3CCDFBD171DF104004BC5AF /* NVSequenceAuthor.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -378,7 +416,9 @@
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "BookExplorer DB/BookExplorer DB-Prefix.pch";
 				INFOPLIST_FILE = "BookExplorer DB/BookExplorer DB-Info.plist";
+				MACOSX_DEPLOYMENT_TARGET = 10.7;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SDKROOT = macosx10.7;
 				WRAPPER_EXTENSION = app;
 			};
 			name = Debug;
@@ -390,7 +430,9 @@
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "BookExplorer DB/BookExplorer DB-Prefix.pch";
 				INFOPLIST_FILE = "BookExplorer DB/BookExplorer DB-Info.plist";
+				MACOSX_DEPLOYMENT_TARGET = 10.7;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SDKROOT = macosx10.7;
 				WRAPPER_EXTENSION = app;
 			};
 			name = Release;
