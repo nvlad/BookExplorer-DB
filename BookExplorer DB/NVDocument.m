@@ -66,8 +66,8 @@ NSInteger currentViewMode = 0;
 		for (int i = 0; i < [urls count]; i++) {
 			NSURL *url = [urls objectAtIndex:i];
 			[library loadBookFromURL:url];
-			[self.writterTableView reloadData];
 		}
+		[self.writterTableView reloadData];
 		[[self statusString] setStringValue:[NSString stringWithFormat:@"Authors %ld, Books %ld", [library.authors count], [library.books count]]];
 	}
 }
@@ -253,7 +253,7 @@ NSInteger currentViewMode = 0;
 			text = [[library.books objectAtIndex:rowIndex] valueForKey:identifier];
 			NSLog(@"%@: %@", identifier, text);
 			if ([identifier isEqual:@"sequenceNum"] && [[text description] isEqual:@"0"]) {
-				NVBook *book = [library.books objectAtIndex:rowIndex];
+//				NVBook *book = [library.books objectAtIndex:rowIndex];
 //				if (![book sequence] || [[book sequence] isEqual:@""])
 					text = @"";
 			} else if ([identifier isEqual:@"author"] || [identifier isEqual:@"sequence"]) {
