@@ -68,6 +68,9 @@ NSInteger currentViewMode = 0;
 			[library loadBookFromURL:url];
 		}
 		[self.writterTableView reloadData];
+		[library sortAuthors];
+		[library sortSequences];
+		[library sortBooks];
 		[[self statusString] setStringValue:[NSString stringWithFormat:@"Authors %ld, Books %ld", [library.authors count], [library.books count]]];
 	}
 }

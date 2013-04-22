@@ -44,4 +44,9 @@
 -(void)loadBookFromFile:(NSString *)file;
 -(void)loadBooksFromPath:(NSString *)path;
 
+
+-(void)sortBooks;
+-(void)sortSequences;
+-(void)sortAuthors;
+
 @end

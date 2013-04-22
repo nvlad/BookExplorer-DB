@@ -227,4 +227,31 @@
 	}
 }
 
+-(void)sortBooks {
+	NSSortDescriptor *sortDescriptor;
+	sortDescriptor = [[NSSortDescriptor alloc] initWithKey:@"title" ascending:YES];
+	NSMutableArray *sortDescriptors = [[NSMutableArray alloc] init];
+	[sortDescriptors addObject:sortDescriptor];
+	NSArray *array = [_books sortedArrayUsingDescriptors:sortDescriptors];
+	[self setBooks:[[NSMutableArray alloc] initWithArray:array]];
+}
+-(void)sortSequences {
+	NSSortDescriptor *sortDescriptor;
+	sortDescriptor = [[NSSortDescriptor alloc] initWithKey:@"title" ascending:YES];
+	NSMutableArray *sortDescriptors = [[NSMutableArray alloc] init];
+	[sortDescriptors addObject:sortDescriptor];
+	NSArray *array = [_sequences sortedArrayUsingDescriptors:sortDescriptors];
+	[self setSequences:[[NSMutableArray alloc] initWithArray:array]];
+}
+-(void)sortAuthors {
+	NSSortDescriptor *sortDescriptor;
+	sortDescriptor = [[NSSortDescriptor alloc] initWithKey:@"lastName" ascending:YES];
+	NSMutableArray *sortDescriptors = [[NSMutableArray alloc] init];
+	[sortDescriptors addObject:sortDescriptor];
+	sortDescriptor = [[NSSortDescriptor alloc] initWithKey:@"firstName" ascending:YES];
+	[sortDescriptors addObject:sortDescriptor];
+	NSArray *array = [_authors sortedArrayUsingDescriptors:sortDescriptors];
+	[self setAuthors:[[NSMutableArray alloc] initWithArray:array]];
+}
+
 @end
