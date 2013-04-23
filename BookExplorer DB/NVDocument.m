@@ -91,7 +91,7 @@ NSInteger currentViewMode = 0;
 	switch (currentViewMode) {
 		case 0:
 			NSLog(@"delete Author!");
-			
+			[library removeAuthorsAtIndexes:[self.writterTableView selectedRowIndexes]];
 			break;
 		case 1:
 			NSLog(@"delete Sequence!");

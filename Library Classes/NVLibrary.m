@@ -181,8 +181,9 @@
 	}
 }
 -(void)removeSequencesAtIndexes:(NSIndexSet *)indexes {
-	for (NSInteger row = [indexes lastIndex]; row != NSNotFound; row = [indexes indexLessThanIndex:row]) {
-		[self removeSequencesObject:[_sequences objectAtIndex:row]];
+	NSArray *toRemove = [_sequences objectsAtIndexes:indexes];
+	for (NVSequence *sequence in toRemove) {
+		[self removeSequencesObject:sequence];
 	}
 }
 -(void)removeSequencesAtIndex:(NSInteger)index {
@@ -198,8 +199,9 @@
 	}
 }
 -(void)removeAuthorsAtIndexes:(NSIndexSet *)indexes {
-	for (NSInteger row = [indexes lastIndex]; row != NSNotFound; row = [indexes indexLessThanIndex:row]) {
-		[self removeAuthorsObject:[_authors objectAtIndex:row]];
+	NSArray *toRemove = [_authors objectsAtIndexes:indexes];
+	for (NVAuthor *author in toRemove) {
+		[self removeAuthorsObject:author];
 	}
 }
 -(void)removeAuthorsAtIndex:(NSInteger)index {
